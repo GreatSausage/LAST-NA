@@ -136,7 +136,7 @@ Public Class FrmDepartmentHeadControls
                 Dim FTIOID As Integer = Convert.ToInt32(DGFiledFTIO.Rows(e.RowIndex).Cells("FTIO ID").Value)
                 If MsgBox("Are you sure you want to decline the FTIO filed?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
                     ClassDepartmentHeadControls.DeclineFTIO(FTIOID)
-                    Dim name As String = DGFTIOFiled.Rows(e.RowIndex).Cells("Full Name").Value.ToString
+                    Dim name As String = DGFiledFTIO.Rows(e.RowIndex).Cells("Full Name").Value.ToString
                     Auditing($"{LblName.Text} declined {name}'s FTIO.")
                     DGFiledFTIO.Rows.RemoveAt(e.RowIndex)
                 End If

@@ -130,3 +130,5 @@ C:\Users\Albert\Documents\GitHub\LAST-NA\obj\Debug\MCPMS.vbproj.CopyComplete
 C:\Users\Albert\Documents\GitHub\LAST-NA\obj\Debug\MCPMS.exe
 C:\Users\Albert\Documents\GitHub\LAST-NA\obj\Debug\MCPMS.xml
 C:\Users\Albert\Documents\GitHub\LAST-NA\obj\Debug\MCPMS.pdb
+C:\Users\Clifford\Desktop\LAST-NA\obj\Debug\MCPMS.vbproj.AssemblyReference.cache
+C:\Users\Clifford\Desktop\LAST-NA\obj\Debug\MCPMS.FrmSignUpPayroll.resources
