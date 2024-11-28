@@ -161,6 +161,12 @@
     <Compile Include="Forms\Maintenance\FrmSignUpEmployee.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Maintenance\FrmSignUpPayroll.Designer.vb">
+      <DependentUpon>FrmSignUpPayroll.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maintenance\FrmSignUpPayroll.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Payroll Calculation\FrmPayrollCalculation.Designer.vb">
       <DependentUpon>FrmPayrollCalculation.vb</DependentUpon>
     </Compile>
@@ -271,6 +277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Maintenance\FrmSignUpEmployee.resx">
       <DependentUpon>FrmSignUpEmployee.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\FrmSignUpPayroll.resx">
+      <DependentUpon>FrmSignUpPayroll.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Payroll Calculation\FrmPayrollCalculation.resx">
       <DependentUpon>FrmPayrollCalculation.vb</DependentUpon>
