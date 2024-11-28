@@ -22,6 +22,7 @@ Partial Class FrmMainte
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -70,6 +71,13 @@ Partial Class FrmMainte
         Me.Guna2TabControl1 = New Guna.UI2.WinForms.Guna2TabControl()
         Me.tabUser = New System.Windows.Forms.TabPage()
         Me.DgUser = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.userID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fullName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.firstName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lastName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.userName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.password = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.role = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel51 = New System.Windows.Forms.Panel()
         Me.Panel37 = New System.Windows.Forms.Panel()
         Me.Panel39 = New System.Windows.Forms.Panel()
@@ -284,13 +292,8 @@ Partial Class FrmMainte
         Me.BtnSaveVoluntary = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel45 = New System.Windows.Forms.Panel()
         Me.BtnDeleteVoluntary = New Guna.UI2.WinForms.Guna2Button()
-        Me.userID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.fullName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.firstName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.lastName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.userName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.password = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.role = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Guna2TabControl1.SuspendLayout()
         Me.tabUser.SuspendLayout()
         CType(Me.DgUser, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -348,6 +351,7 @@ Partial Class FrmMainte
         CType(Me.DgVoluntary, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2TabControl1
@@ -463,6 +467,58 @@ Partial Class FrmMainte
         Me.DgUser.ThemeStyle.RowsStyle.Height = 24
         Me.DgUser.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DgUser.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        '
+        'userID
+        '
+        Me.userID.DataPropertyName = "userID"
+        Me.userID.HeaderText = "User ID"
+        Me.userID.Name = "userID"
+        Me.userID.ReadOnly = True
+        '
+        'fullName
+        '
+        Me.fullName.DataPropertyName = "fullName"
+        Me.fullName.HeaderText = "Name"
+        Me.fullName.Name = "fullName"
+        Me.fullName.ReadOnly = True
+        '
+        'firstName
+        '
+        Me.firstName.DataPropertyName = "firstName"
+        Me.firstName.HeaderText = "Firstname"
+        Me.firstName.Name = "firstName"
+        Me.firstName.ReadOnly = True
+        Me.firstName.Visible = False
+        '
+        'lastName
+        '
+        Me.lastName.DataPropertyName = "lastName"
+        Me.lastName.HeaderText = "Lastname"
+        Me.lastName.Name = "lastName"
+        Me.lastName.ReadOnly = True
+        Me.lastName.Visible = False
+        '
+        'userName
+        '
+        Me.userName.DataPropertyName = "userName"
+        Me.userName.HeaderText = "Username"
+        Me.userName.Name = "userName"
+        Me.userName.ReadOnly = True
+        '
+        'password
+        '
+        Me.password.DataPropertyName = "password"
+        Me.password.HeaderText = "Password"
+        Me.password.Name = "password"
+        Me.password.ReadOnly = True
+        Me.password.Visible = False
+        '
+        'role
+        '
+        Me.role.DataPropertyName = "role"
+        Me.role.HeaderText = "Role"
+        Me.role.Name = "role"
+        Me.role.ReadOnly = True
         '
         'Panel51
         '
@@ -4005,57 +4061,18 @@ Partial Class FrmMainte
         Me.BtnDeleteVoluntary.TabIndex = 3
         Me.BtnDeleteVoluntary.Text = "DELETE"
         '
-        'userID
+        'ContextMenuStrip1
         '
-        Me.userID.DataPropertyName = "userID"
-        Me.userID.HeaderText = "User ID"
-        Me.userID.Name = "userID"
-        Me.userID.ReadOnly = True
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.ShowImageMargin = False
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(156, 48)
         '
-        'fullName
+        'ToolStripMenuItem1
         '
-        Me.fullName.DataPropertyName = "fullName"
-        Me.fullName.HeaderText = "Name"
-        Me.fullName.Name = "fullName"
-        Me.fullName.ReadOnly = True
-        '
-        'firstName
-        '
-        Me.firstName.DataPropertyName = "firstName"
-        Me.firstName.HeaderText = "Firstname"
-        Me.firstName.Name = "firstName"
-        Me.firstName.ReadOnly = True
-        Me.firstName.Visible = False
-        '
-        'lastName
-        '
-        Me.lastName.DataPropertyName = "lastName"
-        Me.lastName.HeaderText = "Lastname"
-        Me.lastName.Name = "lastName"
-        Me.lastName.ReadOnly = True
-        Me.lastName.Visible = False
-        '
-        'userName
-        '
-        Me.userName.DataPropertyName = "userName"
-        Me.userName.HeaderText = "Username"
-        Me.userName.Name = "userName"
-        Me.userName.ReadOnly = True
-        '
-        'password
-        '
-        Me.password.DataPropertyName = "password"
-        Me.password.HeaderText = "Password"
-        Me.password.Name = "password"
-        Me.password.ReadOnly = True
-        Me.password.Visible = False
-        '
-        'role
-        '
-        Me.role.DataPropertyName = "role"
-        Me.role.HeaderText = "Role"
-        Me.role.Name = "role"
-        Me.role.ReadOnly = True
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(155, 22)
+        Me.ToolStripMenuItem1.Text = "Reset Password"
         '
         'FrmMainte
         '
@@ -4124,6 +4141,7 @@ Partial Class FrmMainte
         CType(Me.DgVoluntary, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -4352,4 +4370,6 @@ Partial Class FrmMainte
     Friend WithEvents userName As DataGridViewTextBoxColumn
     Friend WithEvents password As DataGridViewTextBoxColumn
     Friend WithEvents role As DataGridViewTextBoxColumn
+    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
 End Class

@@ -1443,5 +1443,35 @@ Public Class FrmMainte
         TxtUsername.Clear()
         MdlMaintenance.userID = 0
     End Sub
+
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+        Try
+            Dim selectedRow As DataGridViewRow = DgUser.SelectedRows(0)
+
+            ' Retrieve the userID of the selected row (assuming userID is at index 0)
+            Dim userID As Integer = selectedRow.Cells(0).Value
+
+            If MsgBox("Are you sure you want to reset the password of this user?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                RunCommand("Update tblusers set password=NULL where userID = '" & userID & "'")
+                With com
+                    .ExecuteNonQuery()
+                    .Parameters.Clear()
+                    MsgBox("Password reset")
+                End With
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+    Private Sub DataGridView1_MouseDown(sender As Object, e As MouseEventArgs) Handles DgUser.MouseDown
+        ' Check if the right mouse button is clicked
+        If e.Button = MouseButtons.Right Then
+            ' Check if any row is selected
+            If DgUser.SelectedRows.Count > 0 Then
+                ' Show the ContextMenuStrip at the mouse click location
+                ContextMenuStrip1.Show(DgUser, e.Location)
+            End If
+        End If
+    End Sub
 #End Region
 End Class

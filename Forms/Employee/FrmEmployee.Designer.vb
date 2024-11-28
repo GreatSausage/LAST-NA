@@ -32,6 +32,17 @@ Partial Class FrmEmployee
         Me.TCEmployee = New Guna.UI2.WinForms.Guna2TabControl()
         Me.TPEmployeeList = New System.Windows.Forms.TabPage()
         Me.DGEmployee = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.empID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.empNumber = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.rfid = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FirstName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MiddleName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LastName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.departmentName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.positionName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.salary = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.type = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.STATUS = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TPEmployeeProfile = New System.Windows.Forms.TabPage()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.DGVoluntary = New Guna.UI2.WinForms.Guna2DataGridView()
@@ -72,17 +83,8 @@ Partial Class FrmEmployee
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.empID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.empNumber = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.rfid = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FirstName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MiddleName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LastName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.departmentName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.positionName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.salary = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.type = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.STATUS = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TCEmployee.SuspendLayout()
         Me.TPEmployeeList.SuspendLayout()
         CType(Me.DGEmployee, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -92,6 +94,7 @@ Partial Class FrmEmployee
         Me.Panel8.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TCEmployee
@@ -195,6 +198,93 @@ Partial Class FrmEmployee
         Me.DGEmployee.ThemeStyle.RowsStyle.Height = 28
         Me.DGEmployee.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DGEmployee.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        '
+        'empID
+        '
+        Me.empID.DataPropertyName = "employeeID"
+        Me.empID.HeaderText = "ID"
+        Me.empID.MinimumWidth = 8
+        Me.empID.Name = "empID"
+        Me.empID.ReadOnly = True
+        Me.empID.Visible = False
+        '
+        'empNumber
+        '
+        Me.empNumber.DataPropertyName = "employeeNumber"
+        Me.empNumber.HeaderText = "Associate Number"
+        Me.empNumber.MinimumWidth = 8
+        Me.empNumber.Name = "empNumber"
+        Me.empNumber.ReadOnly = True
+        '
+        'rfid
+        '
+        Me.rfid.DataPropertyName = "rfidnumber"
+        Me.rfid.HeaderText = "RFID Number"
+        Me.rfid.MinimumWidth = 8
+        Me.rfid.Name = "rfid"
+        Me.rfid.ReadOnly = True
+        '
+        'FirstName
+        '
+        Me.FirstName.DataPropertyName = "firstname"
+        Me.FirstName.HeaderText = "First Name"
+        Me.FirstName.MinimumWidth = 8
+        Me.FirstName.Name = "FirstName"
+        Me.FirstName.ReadOnly = True
+        '
+        'MiddleName
+        '
+        Me.MiddleName.DataPropertyName = "middlename"
+        Me.MiddleName.HeaderText = "Middle Name"
+        Me.MiddleName.MinimumWidth = 8
+        Me.MiddleName.Name = "MiddleName"
+        Me.MiddleName.ReadOnly = True
+        '
+        'LastName
+        '
+        Me.LastName.DataPropertyName = "lastname"
+        Me.LastName.HeaderText = "Last Name"
+        Me.LastName.MinimumWidth = 8
+        Me.LastName.Name = "LastName"
+        Me.LastName.ReadOnly = True
+        '
+        'departmentName
+        '
+        Me.departmentName.DataPropertyName = "departmentName"
+        Me.departmentName.HeaderText = "Department"
+        Me.departmentName.MinimumWidth = 8
+        Me.departmentName.Name = "departmentName"
+        Me.departmentName.ReadOnly = True
+        '
+        'positionName
+        '
+        Me.positionName.DataPropertyName = "positionName"
+        Me.positionName.HeaderText = "Position"
+        Me.positionName.MinimumWidth = 8
+        Me.positionName.Name = "positionName"
+        Me.positionName.ReadOnly = True
+        '
+        'salary
+        '
+        Me.salary.DataPropertyName = "salary"
+        Me.salary.HeaderText = "Salary"
+        Me.salary.Name = "salary"
+        Me.salary.ReadOnly = True
+        '
+        'type
+        '
+        Me.type.DataPropertyName = "type"
+        Me.type.HeaderText = "Compensation Type"
+        Me.type.Name = "type"
+        Me.type.ReadOnly = True
+        '
+        'STATUS
+        '
+        Me.STATUS.DataPropertyName = "status"
+        Me.STATUS.HeaderText = "Status"
+        Me.STATUS.MinimumWidth = 8
+        Me.STATUS.Name = "STATUS"
+        Me.STATUS.ReadOnly = True
         '
         'TPEmployeeProfile
         '
@@ -790,92 +880,17 @@ Partial Class FrmEmployee
         '
         Me.Timer1.Enabled = True
         '
-        'empID
+        'ContextMenuStrip1
         '
-        Me.empID.DataPropertyName = "employeeID"
-        Me.empID.HeaderText = "ID"
-        Me.empID.MinimumWidth = 8
-        Me.empID.Name = "empID"
-        Me.empID.ReadOnly = True
-        Me.empID.Visible = False
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(156, 26)
         '
-        'empNumber
+        'ToolStripMenuItem1
         '
-        Me.empNumber.DataPropertyName = "employeeNumber"
-        Me.empNumber.HeaderText = "Associate Number"
-        Me.empNumber.MinimumWidth = 8
-        Me.empNumber.Name = "empNumber"
-        Me.empNumber.ReadOnly = True
-        '
-        'rfid
-        '
-        Me.rfid.DataPropertyName = "rfidnumber"
-        Me.rfid.HeaderText = "RFID Number"
-        Me.rfid.MinimumWidth = 8
-        Me.rfid.Name = "rfid"
-        Me.rfid.ReadOnly = True
-        '
-        'FirstName
-        '
-        Me.FirstName.DataPropertyName = "firstname"
-        Me.FirstName.HeaderText = "First Name"
-        Me.FirstName.MinimumWidth = 8
-        Me.FirstName.Name = "FirstName"
-        Me.FirstName.ReadOnly = True
-        '
-        'MiddleName
-        '
-        Me.MiddleName.DataPropertyName = "middlename"
-        Me.MiddleName.HeaderText = "Middle Name"
-        Me.MiddleName.MinimumWidth = 8
-        Me.MiddleName.Name = "MiddleName"
-        Me.MiddleName.ReadOnly = True
-        '
-        'LastName
-        '
-        Me.LastName.DataPropertyName = "lastname"
-        Me.LastName.HeaderText = "Last Name"
-        Me.LastName.MinimumWidth = 8
-        Me.LastName.Name = "LastName"
-        Me.LastName.ReadOnly = True
-        '
-        'departmentName
-        '
-        Me.departmentName.DataPropertyName = "departmentName"
-        Me.departmentName.HeaderText = "Department"
-        Me.departmentName.MinimumWidth = 8
-        Me.departmentName.Name = "departmentName"
-        Me.departmentName.ReadOnly = True
-        '
-        'positionName
-        '
-        Me.positionName.DataPropertyName = "positionName"
-        Me.positionName.HeaderText = "Position"
-        Me.positionName.MinimumWidth = 8
-        Me.positionName.Name = "positionName"
-        Me.positionName.ReadOnly = True
-        '
-        'salary
-        '
-        Me.salary.DataPropertyName = "salary"
-        Me.salary.HeaderText = "Salary"
-        Me.salary.Name = "salary"
-        Me.salary.ReadOnly = True
-        '
-        'type
-        '
-        Me.type.DataPropertyName = "type"
-        Me.type.HeaderText = "Compensation Type"
-        Me.type.Name = "type"
-        Me.type.ReadOnly = True
-        '
-        'STATUS
-        '
-        Me.STATUS.DataPropertyName = "status"
-        Me.STATUS.HeaderText = "Status"
-        Me.STATUS.MinimumWidth = 8
-        Me.STATUS.Name = "STATUS"
-        Me.STATUS.ReadOnly = True
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(155, 22)
+        Me.ToolStripMenuItem1.Text = "Reset Password"
         '
         'FrmEmployee
         '
@@ -896,6 +911,7 @@ Partial Class FrmEmployee
         Me.Panel8.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -954,4 +970,6 @@ Partial Class FrmEmployee
     Friend WithEvents salary As DataGridViewTextBoxColumn
     Friend WithEvents type As DataGridViewTextBoxColumn
     Friend WithEvents STATUS As DataGridViewTextBoxColumn
+    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
 End Class

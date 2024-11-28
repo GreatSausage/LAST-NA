@@ -187,7 +187,7 @@ Partial Class FrmSignUpAdmin
         Me.TxtPassword.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.TxtPassword.MaxLength = 20
         Me.TxtPassword.Name = "TxtPassword"
-        Me.TxtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TxtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.TxtPassword.PlaceholderText = ""
         Me.TxtPassword.SelectedText = ""
         Me.TxtPassword.Size = New System.Drawing.Size(541, 37)

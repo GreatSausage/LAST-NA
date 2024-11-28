@@ -24,6 +24,12 @@ Public Class FrmDepartmentHeadControls
 
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
 
+        If CLBSchedule.CheckedItems.Count = 0 Then
+            MsgBox("Please set schedule atleast 1 day")
+            Exit Sub
+        End If
+
+
         If CbEmployees.SelectedIndex = -1 Then
             MsgEmptyField()
             Exit Sub

@@ -6,6 +6,16 @@ Public Class ClassLogin
         Try
             Dim username As String = txtusername.Text.Trim
             Dim password As String = txtpassword.Text.Trim
+
+            RunQuery("Select * from tblusers where username='" & username & "' and password is null")
+            If ds.Tables("querytable").Rows.Count > 0 Then
+                MsgBox("Please update your password first")
+                FrmSignUpPayroll.Show()
+                FrmSignUpPayroll.TxtUsername.Text = txtusername.Text.Trim
+                Exit Sub
+            End If
+
+
             RunQuery("Select * from tblusers where username= '" & username & "' and password='" & password & "'")
             If ds.Tables("querytable").Rows.Count > 0 Then
                 usersid = ds.Tables("querytable").Rows(0)(0)
@@ -21,23 +31,21 @@ Public Class ClassLogin
                     RunCommand("Update tblusers set logged='Yes' where username = '" & username & "' and password = '" & password & "'")
                     com.ExecuteNonQuery()
                 End If
+
                 If role = "Admin" Then
                     FrmMain.Show()
                     FrmMain.LblName.Text = adminname
                     DisplayFormPanel(FrmMainte, FrmMain.displaypanel)
                     login.Close()
                     Exit Sub
-
-
                 ElseIf role = "Attendance" Then
                     FrmAttendance.Show()
-                    FrmMain.LblName.Text = adminname
-                    FrmMain.LblPos.Text = role
-
                     login.Close()
                     Exit Sub
                 Else
                     FrmMain.Show()
+                    FrmMain.LblName.Text = adminname
+                    FrmMain.LblPos.Text = role
                     FrmMain.BtnMaintenance.Visible = False
                     FrmMain.Guna2Button3.Visible = False
                     FrmMain.Guna2Button14.Visible = False

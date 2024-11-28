@@ -140,8 +140,8 @@ Partial Class FrmSignUpPayroll
         Me.TxtPassword.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.TxtPassword.MaxLength = 40
         Me.TxtPassword.Name = "TxtPassword"
-        Me.TxtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TxtPassword.PlaceholderText = ""
+        Me.TxtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.TxtPassword.PlaceholderText = "*"
         Me.TxtPassword.SelectedText = ""
         Me.TxtPassword.Size = New System.Drawing.Size(540, 37)
         Me.TxtPassword.TabIndex = 44
