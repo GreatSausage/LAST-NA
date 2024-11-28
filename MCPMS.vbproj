@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4A6B99D4-9C9F-42AA-BAC0-D70C58086E2F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>MCPMS.My.MyApplication</StartupObject>
+    <RootNamespace>MCPMS</RootNamespace>
+    <AssemblyName>MCPMS</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>MCPMS.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>MCPMS.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>packages\Guna.UI2.WinForms.2.0.4.6\lib\net472\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=9.0.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector NET 9.0\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class\ClassAssociates.vb" />
+    <Compile Include="Class\ClassAuditTrail.vb" />
+    <Compile Include="Class\ClassDepartment.vb" />
+    <Compile Include="Class\ClassDepartmentHeadControls.vb" />
+    <Compile Include="Class\ClassEmployee.vb" />
+    <Compile Include="Class\ClassLogin.vb" />
+    <Compile Include="Class\ClassPayrollCalculation.vb" />
+    <Compile Include="Forms\Associate\FrmAssociate.Designer.vb">
+      <DependentUpon>FrmAssociate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Associate\FrmAssociate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Department Head\FrmDepartmentHeadControls.Designer.vb">
+      <DependentUpon>FrmDepartmentHeadControls.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Department Head\FrmDepartmentHeadControls.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Department\FrmDepartmentControls.Designer.vb">
+      <DependentUpon>FrmDepartmentControls.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Department\FrmDepartmentControls.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Employee\FrmEmployee.Designer.vb">
+      <DependentUpon>FrmEmployee.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Employee\FrmEmployee.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintenance\FrmAttendance.Designer.vb">
+      <DependentUpon>FrmAttendance.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maintenance\FrmAttendance.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintenance\FrmAudit.Designer.vb">
+      <DependentUpon>FrmAudit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maintenance\FrmAudit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintenance\FrmLogin.Designer.vb">
+      <DependentUpon>FrmLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maintenance\FrmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintenance\FrmMain.Designer.vb">
+      <DependentUpon>FrmMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maintenance\FrmMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintenance\FrmMainte.Designer.vb">
+      <DependentUpon>FrmMainte.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maintenance\FrmMainte.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintenance\FrmSignUpAdmin.Designer.vb">
+      <DependentUpon>FrmSignUpAdmin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maintenance\FrmSignUpAdmin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Maintenance\FrmSignUpEmployee.Designer.vb">
+      <DependentUpon>FrmSignUpEmployee.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Maintenance\FrmSignUpEmployee.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Payroll Calculation\FrmPayrollCalculation.Designer.vb">
+      <DependentUpon>FrmPayrollCalculation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Payroll Calculation\FrmPayrollCalculation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Payroll Calculation\FrmPayrollPeriod.Designer.vb">
+      <DependentUpon>FrmPayrollPeriod.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Payroll Calculation\FrmPayrollPeriod.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\MdlAttendance.vb" />
+    <Compile Include="Modules\MdlConnections.vb" />
+    <Compile Include="Modules\MdlFunctions.vb" />
+    <Compile Include="Modules\MdlMaintenance.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Printing\CR\CRAttendance.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRAttendance.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Printing\CR\CRDepartmentList.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRDepartmentList.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Printing\CR\CREmployeeList.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CREmployeeList.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Printing\CR\CRPaySlip.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRPaySlip.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Printing\DataSet\DSPrinting.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSPrinting.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Printing\DataSet\DSPrinting.vb">
+      <DependentUpon>DSPrinting.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\FrmReport.Designer.vb">
+      <DependentUpon>FrmReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\FrmReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Printing\FrmPrinting.Designer.vb">
+      <DependentUpon>FrmPrinting.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Printing\FrmPrinting.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\Associate\FrmAssociate.resx">
+      <DependentUpon>FrmAssociate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Department Head\FrmDepartmentHeadControls.resx">
+      <DependentUpon>FrmDepartmentHeadControls.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Department\FrmDepartmentControls.resx">
+      <DependentUpon>FrmDepartmentControls.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Employee\FrmEmployee.resx">
+      <DependentUpon>FrmEmployee.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\FrmAttendance.resx">
+      <DependentUpon>FrmAttendance.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\FrmAudit.resx">
+      <DependentUpon>FrmAudit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\FrmLogin.resx">
+      <DependentUpon>FrmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\FrmMain.resx">
+      <DependentUpon>FrmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\FrmMainte.resx">
+      <DependentUpon>FrmMainte.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\FrmSignUpAdmin.resx">
+      <DependentUpon>FrmSignUpAdmin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Maintenance\FrmSignUpEmployee.resx">
+      <DependentUpon>FrmSignUpEmployee.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Payroll Calculation\FrmPayrollCalculation.resx">
+      <DependentUpon>FrmPayrollCalculation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Payroll Calculation\FrmPayrollPeriod.resx">
+      <DependentUpon>FrmPayrollPeriod.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Printing\CR\CRAttendance.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRAttendance.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Printing\CR\CRDepartmentList.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRDepartmentList.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Printing\CR\CREmployeeList.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CREmployeeList.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\FrmReport.resx">
+      <DependentUpon>FrmReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Printing\CR\CRPaySlip.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRPaySlip.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Printing\FrmPrinting.resx">
+      <DependentUpon>FrmPrinting.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Printing\DataSet\DSPrinting.xsc">
+      <DependentUpon>DSPrinting.xsd</DependentUpon>
+    </None>
+    <None Include="Printing\DataSet\DSPrinting.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSPrinting.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Printing\DataSet\DSPrinting.xss">
+      <DependentUpon>DSPrinting.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>

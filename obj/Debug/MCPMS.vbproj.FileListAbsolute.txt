@@ -1,0 +1,227 @@
+C:\Users\Clifford\source\repos\MCPMS\bin\Debug\MCPMS.exe.config
+C:\Users\Clifford\source\repos\MCPMS\bin\Debug\MCPMS.exe
+C:\Users\Clifford\source\repos\MCPMS\bin\Debug\MCPMS.pdb
+C:\Users\Clifford\source\repos\MCPMS\bin\Debug\MCPMS.xml
+C:\Users\Clifford\source\repos\MCPMS\bin\Debug\Guna.UI2.dll
+C:\Users\Clifford\source\repos\MCPMS\bin\Debug\MySql.Data.dll
+C:\Users\Clifford\source\repos\MCPMS\bin\Debug\MySql.Data.xml
+C:\Users\Clifford\source\repos\MCPMS\obj\Debug\MCPMS.vbproj.AssemblyReference.cache
+C:\Users\Clifford\source\repos\MCPMS\obj\Debug\MCPMS.FrmMaintenance.resources
+C:\Users\Clifford\source\repos\MCPMS\obj\Debug\MCPMS.Resources.resources
+C:\Users\Clifford\source\repos\MCPMS\obj\Debug\MCPMS.vbproj.GenerateResource.cache
+C:\Users\Clifford\source\repos\MCPMS\obj\Debug\MCPMS.vbproj.CoreCompileInputs.cache
+C:\Users\Clifford\source\repos\MCPMS\obj\Debug\MCPMS.vbproj.CopyComplete
+C:\Users\Clifford\source\repos\MCPMS\obj\Debug\MCPMS.exe
+C:\Users\Clifford\source\repos\MCPMS\obj\Debug\MCPMS.xml
+C:\Users\Clifford\source\repos\MCPMS\obj\Debug\MCPMS.pdb
+C:\Users\Eomer\Desktop\MCPMS\bin\Debug\MCPMS.exe.config
+C:\Users\Eomer\Desktop\MCPMS\bin\Debug\MCPMS.exe
+C:\Users\Eomer\Desktop\MCPMS\bin\Debug\MCPMS.pdb
+C:\Users\Eomer\Desktop\MCPMS\bin\Debug\MCPMS.xml
+C:\Users\Eomer\Desktop\MCPMS\bin\Debug\Guna.UI2.dll
+C:\Users\Eomer\Desktop\MCPMS\bin\Debug\MySql.Data.dll
+C:\Users\Eomer\Desktop\MCPMS\bin\Debug\MySql.Data.xml
+C:\Users\Eomer\Desktop\MCPMS\obj\Debug\MCPMS.FrmMain.resources
+C:\Users\Eomer\Desktop\MCPMS\obj\Debug\MCPMS.FrmMainte.resources
+C:\Users\Eomer\Desktop\MCPMS\obj\Debug\MCPMS.FrmMaintenance.resources
+C:\Users\Eomer\Desktop\MCPMS\obj\Debug\MCPMS.Resources.resources
+C:\Users\Eomer\Desktop\MCPMS\obj\Debug\MCPMS.vbproj.GenerateResource.cache
+C:\Users\Eomer\Desktop\MCPMS\obj\Debug\MCPMS.vbproj.CoreCompileInputs.cache
+C:\Users\Eomer\Desktop\MCPMS\obj\Debug\MCPMS.vbproj.CopyComplete
+C:\Users\Eomer\Desktop\MCPMS\obj\Debug\MCPMS.exe
+C:\Users\Eomer\Desktop\MCPMS\obj\Debug\MCPMS.xml
+C:\Users\Eomer\Desktop\MCPMS\obj\Debug\MCPMS.pdb
+C:\Users\Eomer\Desktop\MCPMS\obj\Debug\MCPMS.FrmAttendance.resources
+C:\Users\Eomer\Desktop\MCPMS\obj\Debug\MCPMS.FrmEmployee.resources
+C:\Users\Eomer\Desktop\MCPMS\obj\Debug\MCPMS.FrmDepartmentControls.resources
+C:\Users\Eomer\Desktop\MCPMS\obj\Debug\MCPMS.FrmDepartmentHeadControls.resources
+C:\Users\Eomer\Desktop\MCPMS\obj\Debug\MCPMS.FrmLogin.resources
+C:\Users\Eomer\Desktop\MCPMS\obj\Debug\MCPMS.FrmPayrollCalculation.resources
+C:\Users\Eomer\Desktop\MCPMS\obj\Debug\MCPMS.vbproj.AssemblyReference.cache
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\MCPMS.exe.config
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\MCPMS.exe
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\MCPMS.pdb
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\MCPMS.xml
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\CrystalDecisions.ReportSource.dll
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\CrystalDecisions.Shared.dll
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\CrystalDecisions.Windows.Forms.dll
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\Guna.UI2.dll
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\MySql.Data.dll
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\stdole.dll
+C:\Users\Clifford\Desktop\MCPMS\bin\Debug\MySql.Data.xml
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.FrmAssociate.resources
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.FrmDepartmentHeadControls.resources
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.FrmDepartmentControls.resources
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.FrmEmployee.resources
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.FrmAttendance.resources
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.FrmLogin.resources
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.FrmMain.resources
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.FrmMainte.resources
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.FrmSignUpAdmin.resources
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.FrmSignUpEmployee.resources
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.FrmPayrollCalculation.resources
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.FrmPayrollPeriod.resources
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.Resources.resources
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.FrmReport.resources
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.FrmPrinting.resources
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.vbproj.GenerateResource.cache
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.vbproj.CoreCompileInputs.cache
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.vbproj.CopyComplete
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.exe
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.xml
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.pdb
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.vbproj.AssemblyReference.cache
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\MCPMS.exe.config
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\MCPMS.exe
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\MCPMS.pdb
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\MCPMS.xml
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\Guna.UI2.dll
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\MySql.Data.dll
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\MySql.Data.xml
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.FrmAssociate.resources
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.FrmDepartmentHeadControls.resources
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.FrmDepartmentControls.resources
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.FrmEmployee.resources
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.FrmAttendance.resources
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.FrmLogin.resources
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.FrmMain.resources
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.FrmMainte.resources
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.FrmSignUpAdmin.resources
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.FrmSignUpEmployee.resources
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.FrmPayrollCalculation.resources
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.FrmPayrollPeriod.resources
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.Resources.resources
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.FrmReport.resources
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.FrmPrinting.resources
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.vbproj.GenerateResource.cache
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.vbproj.CoreCompileInputs.cache
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.vbproj.CopyComplete
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.exe
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.xml
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.pdb
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.vbproj.AssemblyReference.cache
+<<<<<<< HEAD
+C:\Users\Albert\Documents\GitHub\MCPMS\obj\Debug\MCPMS.FrmAudit.resources
+=======
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\Albert\Documents\GitHub\MCPMS\bin\Debug\stdole.dll
+C:\Users\Clifford\Desktop\MCPMS\obj\Debug\MCPMS.FrmAudit.resources
+>>>>>>> cc5fc0cdda03db908480abb33cedcd1e0a3d0d14
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\MCPMS.exe.config
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\MCPMS.exe
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\MCPMS.pdb
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\MCPMS.xml
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\CrystalDecisions.ReportSource.dll
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\CrystalDecisions.Shared.dll
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\CrystalDecisions.Windows.Forms.dll
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\Guna.UI2.dll
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\MySql.Data.dll
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\stdole.dll
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\bin\Debug\MySql.Data.xml
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.vbproj.AssemblyReference.cache
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.FrmAssociate.resources
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.FrmDepartmentHeadControls.resources
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.FrmDepartmentControls.resources
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.FrmEmployee.resources
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.FrmAttendance.resources
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.FrmAudit.resources
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.FrmLogin.resources
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.FrmMain.resources
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.FrmMainte.resources
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.FrmSignUpAdmin.resources
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.FrmSignUpEmployee.resources
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.FrmPayrollCalculation.resources
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.FrmPayrollPeriod.resources
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.Resources.resources
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.FrmReport.resources
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.FrmPrinting.resources
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.vbproj.GenerateResource.cache
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.vbproj.CoreCompileInputs.cache
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.vbproj.CopyComplete
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.exe
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.xml
+C:\Users\Clifford\Desktop\MCPMS - Copy (2)\obj\Debug\MCPMS.pdb
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\MCPMS.exe.config
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\MCPMS.exe
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\MCPMS.pdb
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\MCPMS.xml
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\CrystalDecisions.ReportSource.dll
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\CrystalDecisions.Shared.dll
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\CrystalDecisions.Windows.Forms.dll
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\Guna.UI2.dll
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\MySql.Data.dll
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\stdole.dll
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\bin\Debug\MySql.Data.xml
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.vbproj.AssemblyReference.cache
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.FrmAssociate.resources
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.FrmDepartmentHeadControls.resources
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.FrmDepartmentControls.resources
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.FrmEmployee.resources
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.FrmAttendance.resources
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.FrmAudit.resources
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.FrmLogin.resources
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.FrmMain.resources
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.FrmMainte.resources
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.FrmSignUpAdmin.resources
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.FrmSignUpEmployee.resources
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.FrmPayrollCalculation.resources
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.FrmPayrollPeriod.resources
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.Resources.resources
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.FrmReport.resources
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.FrmPrinting.resources
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.vbproj.GenerateResource.cache
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.vbproj.CoreCompileInputs.cache
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.vbproj.CopyComplete
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.exe
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.xml
+C:\Users\Clifford\Desktop\FINAL-CAPSTONE\obj\Debug\MCPMS.pdb
