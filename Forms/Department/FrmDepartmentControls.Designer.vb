@@ -95,6 +95,8 @@ Partial Class FrmDepartmentControls
         '
         Me.DGDepartment.AllowUserToAddRows = False
         Me.DGDepartment.AllowUserToDeleteRows = False
+        Me.DGDepartment.AllowUserToResizeColumns = False
+        Me.DGDepartment.AllowUserToResizeRows = False
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
         Me.DGDepartment.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
