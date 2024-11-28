@@ -106,6 +106,7 @@ Public Class FrmEmployee
         CbPosition.SelectedIndex = -1
         DGVoluntary.ClearSelection()
         ClassEmployee.employeeID = 0
+        ClassEmployee.LoadVoluntary(DGVoluntary)
     End Sub
 
     Public Shared Sub GetDailyWageOfMonthlyEmployees(id As Integer)

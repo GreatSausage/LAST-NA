@@ -28,7 +28,7 @@ Module MdlMaintenance
 
 
 
-    Public Sub NewUser(firstname As String, lastname As String, role As String, username As String, password As String)
+    Public Sub NewUser(firstname As String, lastname As String, role As String, username As String)
         Try
             Dim first As String = StrConv(firstname, VbStrConv.ProperCase)
             Dim last As String = StrConv(lastname, VbStrConv.ProperCase)
@@ -52,13 +52,12 @@ Module MdlMaintenance
                 Else
                     reader.Close()
 
-                    Dim command As New MySqlCommand("INSERT INTO tblUsers (firstName, lastName, role, username, password, status) 
-                                                     VALUES (@firstname, @lastname, 'Payroll Staff', @username, @password, 'Active')", connection)
+                    Dim command As New MySqlCommand("INSERT INTO tblUsers (firstName, lastName, role, username, status) 
+                                                     VALUES (@firstname, @lastname, 'Payroll Staff', @username, 'Active')", connection)
                     With command.Parameters
                         .AddWithValue("@firstname", first)
                         .AddWithValue("@lastname", last)
                         .AddWithValue("@username", username)
-                        .AddWithValue("@password", password)
                     End With
                     command.ExecuteNonQuery()
                     MessageBox.Show("User has been added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -66,12 +65,11 @@ Module MdlMaintenance
                     userID = 0
                 End If
             Else
-                Dim command As New MySqlCommand("UPDATE tblUsers SET firstname = @firstname, lastname = @lastname, username = @username, password = @password WHERE userID = @userID", connection)
+                Dim command As New MySqlCommand("UPDATE tblUsers SET firstname = @firstname, lastname = @lastname, username = @username WHERE userID = @userID", connection)
                 With command.Parameters
                     .AddWithValue("@firstname", first)
                     .AddWithValue("@lastname", last)
                     .AddWithValue("@username", username)
-                    .AddWithValue("@password", password)
                     .AddWithValue("@userID", userID)
                 End With
                 command.ExecuteNonQuery()
@@ -89,7 +87,6 @@ Module MdlMaintenance
     Public firstname As String = ""
     Public lastname As String = ""
     Public username As String = ""
-    Public password As String = ""
 
     Public Sub SelectUser(dg As DataGridView)
         Try
@@ -101,8 +98,6 @@ Module MdlMaintenance
                 lastname = dg.SelectedRows(0).Cells(3).Value
                 FrmMainte.TxtUsername.Text = dg.SelectedRows(0).Cells(4).Value
                 username = dg.SelectedRows(0).Cells(4).Value
-                FrmMainte.TxtPassword.Text = dg.SelectedRows(0).Cells(5).Value
-                password = dg.SelectedRows(0).Cells(5).Value
             End If
         Catch ex As Exception
 

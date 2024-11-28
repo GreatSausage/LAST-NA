@@ -35,11 +35,6 @@ Public Class FrmMainte
         TxtSSSMinSalary.Text = maxSalaryOne
 
         cbRoles.SelectedIndex = 0
-        BtnSaveDepartment.Enabled = True
-        BtnSavePosition.Enabled = True
-        BtnSaveAllowance.Enabled = True
-        BtnSaveIncentives.Enabled = True
-        BtnSaveUser.Enabled = True
     End Sub
 
 #Region "User Maintenance"
@@ -52,9 +47,7 @@ Public Class FrmMainte
         Try
             If String.IsNullOrEmpty(TxtFirstname.Text) OrElse
           String.IsNullOrEmpty(TxtLastname.Text) OrElse
-          String.IsNullOrEmpty(TxtUsername.Text) OrElse
-          String.IsNullOrEmpty(TxtPassword.Text) OrElse
-          String.IsNullOrEmpty(TxtConfirmPass.Text) Then
+          String.IsNullOrEmpty(TxtUsername.Text) Then
                 MsgEmptyField()
                 Exit Sub
             ElseIf Not Regex.IsMatch(TxtFirstname.Text, forNames) OrElse
@@ -64,16 +57,13 @@ Public Class FrmMainte
             ElseIf Not Regex.IsMatch(TxtUsername.Text, antiSpace) Then
                 MessageBox.Show("Username cannot contain spaces.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
-            ElseIf TxtPassword.Text <> TxtConfirmPass.Text Then
-                MessageBox.Show("Password do not match.", "Incorrect Password", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Exit Sub
+
             Else
-                NewUser(TxtFirstname.Text, TxtLastname.Text, cbRoles.SelectedItem.ToString, TxtUsername.Text, TxtPassword.Text)
+                NewUser(TxtFirstname.Text, TxtLastname.Text, cbRoles.SelectedItem.ToString, TxtUsername.Text)
                 DisplayUserInForm()
                 TxtFirstname.Clear()
                 TxtLastname.Clear()
-                TxtPassword.Clear()
-                TxtConfirmPass.Clear()
+
                 TxtUsername.Clear()
             End If
         Catch ex As Exception
@@ -81,39 +71,24 @@ Public Class FrmMainte
         End Try
     End Sub
 
-    Private Sub rbShow_CheckedChanged(sender As Object, e As EventArgs) Handles rbShow.CheckedChanged
-        If rbShow.Checked Then
-            TxtPassword.PasswordChar = ""
-            TxtConfirmPass.PasswordChar = ""
-        Else
-            TxtPassword.PasswordChar = "•"
-            TxtConfirmPass.PasswordChar = "•"
-        End If
-    End Sub
-
     Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles BtnDelete.Click
         If String.IsNullOrEmpty(TxtFirstname.Text) OrElse
            String.IsNullOrEmpty(TxtLastname.Text) OrElse
-           String.IsNullOrEmpty(TxtUsername.Text) OrElse
-           String.IsNullOrEmpty(TxtPassword.Text) OrElse
-           String.IsNullOrEmpty(TxtConfirmPass.Text) Then
+           String.IsNullOrEmpty(TxtUsername.Text) Then
             MsgEmptyField()
             Exit Sub
-        ElseIf MdlMaintenance.firstname <> TxtFirstname.Text OrElse MdlMaintenance.lastname <> TxtLastname.Text OrElse MdlMaintenance.username <> TxtUsername.Text OrElse MdlMaintenance.password <> TxtPassword.Text Then
+        ElseIf MdlMaintenance.firstname <> TxtFirstname.Text OrElse MdlMaintenance.lastname <> TxtLastname.Text OrElse MdlMaintenance.username <> TxtUsername.Text Then
             MessageBox.Show("Selected user doesn't match.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             MdlMaintenance.firstname = ""
             MdlMaintenance.lastname = ""
             MdlMaintenance.username = ""
-            MdlMaintenance.password = ""
             MdlMaintenance.userID = 0
             TxtFirstname.Clear()
             TxtLastname.Clear()
             TxtUsername.Clear()
-            TxtPassword.Clear()
-            TxtConfirmPass.Clear()
             DgUser.ClearSelection()
             Exit Sub
-        ElseIf MdlMaintenance.userID = 0 AndAlso (Not String.IsNullOrEmpty(TxtFirstname.Text) OrElse Not String.IsNullOrEmpty(TxtLastname.Text) OrElse Not String.IsNullOrEmpty(TxtUsername.Text) OrElse Not String.IsNullOrEmpty(TxtPassword.Text)) Then
+        ElseIf MdlMaintenance.userID = 0 AndAlso (Not String.IsNullOrEmpty(TxtFirstname.Text) OrElse Not String.IsNullOrEmpty(TxtLastname.Text) OrElse Not String.IsNullOrEmpty(TxtUsername.Text)) Then
             MessageBox.Show("Invalid deletion.")
             Exit Sub
         ElseIf MdlMaintenance.userID <> 0 Then
@@ -124,13 +99,11 @@ Public Class FrmMainte
                 MdlMaintenance.firstname = ""
                 MdlMaintenance.lastname = ""
                 MdlMaintenance.username = ""
-                MdlMaintenance.password = ""
                 MdlMaintenance.userID = 0
                 TxtFirstname.Clear()
                 TxtLastname.Clear()
                 TxtUsername.Clear()
-                TxtPassword.Clear()
-                TxtConfirmPass.Clear()
+
                 DgUser.ClearSelection()
                 Exit Sub
             End If
@@ -142,50 +115,21 @@ Public Class FrmMainte
         MdlMaintenance.firstname = ""
         MdlMaintenance.lastname = ""
         MdlMaintenance.username = ""
-        MdlMaintenance.password = ""
         MdlMaintenance.userID = 0
         TxtFirstname.Clear()
         TxtLastname.Clear()
         TxtUsername.Clear()
-        TxtPassword.Clear()
-        TxtConfirmPass.Clear()
         DgUser.ClearSelection()
     End Sub
 
     Private Sub DgUser_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgUser.CellClick
         Try
             SelectUser(DgUser)
-
-            If MdlMaintenance.firstname <> TxtFirstname.Text OrElse MdlMaintenance.lastname <> TxtLastname.Text OrElse MdlMaintenance.username <> TxtUsername.Text OrElse MdlMaintenance.password <> TxtPassword.Text Then
-                BtnSaveUser.Enabled = True
-                BtnDelete.Enabled = False
-                Exit Sub
-            ElseIf MdlMaintenance.firstname <> TxtFirstname.Text OrElse MdlMaintenance.lastname <> TxtLastname.Text Then
-                BtnSaveUser.Enabled = True
-                BtnDelete.Enabled = False
-            Else
-                BtnSaveUser.Enabled = False
-                BtnDelete.Enabled = True
-            End If
         Catch ex As Exception
 
         End Try
     End Sub
 
-    Private Sub TxtUser_TextChanged(sender As Object, e As EventArgs) Handles TxtFirstname.TextChanged
-
-        If MdlMaintenance.firstname <> TxtFirstname.Text OrElse MdlMaintenance.lastname <> TxtLastname.Text OrElse MdlMaintenance.username <> TxtUsername.Text OrElse MdlMaintenance.password <> TxtPassword.Text Then
-            BtnSaveUser.Enabled = True
-            BtnDelete.Enabled = False
-            Exit Sub
-        ElseIf MdlMaintenance.firstname <> TxtFirstname.Text OrElse MdlMaintenance.lastname <> TxtLastname.Text Then
-            BtnSaveUser.Enabled = True
-            BtnDelete.Enabled = False
-        Else
-            BtnSaveUser.Enabled = False
-            BtnDelete.Enabled = True
-        End If
-    End Sub
 #End Region
 
 #Region "Department"
@@ -224,15 +168,6 @@ Public Class FrmMainte
     Private Sub DgDepartment_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgDepartment.CellClick
         Try
             SelectDepartment(DgDepartment)
-            If MdlMaintenance.departmentName <> TxtDepartment.Text Then
-                BtnSaveDepartment.Enabled = True
-                Exit Sub
-            ElseIf MdlMaintenance.departmentName = "" Then
-                BtnSaveDepartment.Enabled = True
-                Exit Sub
-            Else
-                BtnSaveDepartment.Enabled = False
-            End If
         Catch ex As Exception
         End Try
     End Sub
@@ -262,6 +197,11 @@ Public Class FrmMainte
             If MessageBox.Show("Are you sure you want to delete this department?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 UpdateDepartmentStatus(DgDepartment)
                 DisplayDepartmentInForm()
+                Dim dt As DataTable = DisplayDepartment()
+                Dim dtDepartment As DataTable = DisplayDepartment()
+                CbDepartment.DataSource = dtDepartment
+                CbDepartment.ValueMember = "departmentID"
+                CbDepartment.DisplayMember = "departmentName"
                 TxtDepartment.Clear()
                 MdlMaintenance.departmentName = ""
                 Exit Sub
@@ -272,6 +212,10 @@ Public Class FrmMainte
             If MessageBox.Show("Are you sure you want to delete this department?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 UpdateDepartmentStatus(DgDepartment)
                 DisplayDepartmentInForm()
+                Dim dtDepartment As DataTable = DisplayDepartment()
+                CbDepartment.DataSource = dtDepartment
+                CbDepartment.ValueMember = "departmentID"
+                CbDepartment.DisplayMember = "departmentName"
                 MdlMaintenance.departmentName = ""
                 TxtDepartment.Clear()
                 Exit Sub
@@ -286,15 +230,6 @@ Public Class FrmMainte
             MdlMaintenance.departmentID = 0
         End If
 
-        If MdlMaintenance.departmentName <> TxtDepartment.Text Then
-            BtnSaveDepartment.Enabled = True
-            Exit Sub
-        ElseIf MdlMaintenance.departmentName = "" Then
-            BtnSaveDepartment.Enabled = True
-            Exit Sub
-        Else
-            BtnSaveDepartment.Enabled = False
-        End If
     End Sub
 
 
@@ -335,18 +270,6 @@ Public Class FrmMainte
     Private Sub DgLeave_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgLeave.CellClick
         Try
             SelectLeaveID(dgLeave)
-            If MdlMaintenance.leaveName <> TxtLeave.Text Then
-                BtnSaveLeave.Enabled = True
-                BtnDeleteLeave.Enabled = False
-                Exit Sub
-            ElseIf MdlMaintenance.leaveName = "" Then
-                BtnSaveLeave.Enabled = True
-                BtnDeleteLeave.Enabled = False
-                Exit Sub
-            Else
-                BtnSaveLeave.Enabled = False
-                BtnDeleteLeave.Enabled = True
-            End If
         Catch ex As Exception
         End Try
     End Sub
@@ -392,18 +315,6 @@ Public Class FrmMainte
     Private Sub TxtLeave_TextChanged(sender As Object, e As EventArgs) Handles TxtLeave.TextChanged
         If String.IsNullOrEmpty(TxtLeave.Text) Then
             MdlMaintenance.leaveID = 0
-        End If
-        If MdlMaintenance.leaveName <> TxtLeave.Text Then
-            BtnSaveLeave.Enabled = True
-            BtnDeleteLeave.Enabled = False
-            Exit Sub
-        ElseIf MdlMaintenance.leaveName = "" Then
-            BtnSaveLeave.Enabled = True
-            BtnDeleteLeave.Enabled = False
-            Exit Sub
-        Else
-            BtnSaveLeave.Enabled = False
-            BtnDeleteLeave.Enabled = True
         End If
     End Sub
 
@@ -452,19 +363,6 @@ Public Class FrmMainte
     Private Sub DgPosition_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgPosition.CellClick
         Try
             SelectPositionID(DgPosition)
-
-            'If MdlMaintenance.positionName <> TxtPosition.Text OrElse MdlMaintenance.positionDept <> cbDept.Text Then
-            '    BtnSavePosition.Enabled = True
-            '    BtnDeletePosition.Enabled = False
-            '    Exit Sub
-            'ElseIf MdlMaintenance.positionName = "" AndAlso MdlMaintenance.positionDept = "" Then
-            '    BtnSavePosition.Enabled = True
-            '    BtnDeletePosition.Enabled = False
-            '    Exit Sub
-            'Else
-            '    BtnSavePosition.Enabled = False
-            '    BtnDeletePosition.Enabled = True
-            'End If
         Catch ex As Exception
         End Try
     End Sub
@@ -510,18 +408,6 @@ Public Class FrmMainte
             MdlMaintenance.positionID = 0
         End If
 
-        If MdlMaintenance.positionName <> TxtPosition.Text OrElse MdlMaintenance.positionDept <> cbDept.Text Then
-            BtnSavePosition.Enabled = True
-            BtnDeletePosition.Enabled = False
-            Exit Sub
-        ElseIf MdlMaintenance.positionName = "" AndAlso MdlMaintenance.positionDept = "" Then
-            BtnSavePosition.Enabled = True
-            BtnDeletePosition.Enabled = False
-            Exit Sub
-        ElseIf MdlMaintenance.positionName = TxtPosition.Text OrElse MdlMaintenance.positionDept <> cbDept.text Then
-            BtnSavePosition.Enabled = False
-            BtnDeletePosition.Enabled = True
-        End If
     End Sub
 
     Private Sub CbDepartment_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbDepartment.SelectedIndexChanged
@@ -570,15 +456,6 @@ Public Class FrmMainte
     Private Sub DgAllowance_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgAllowance.CellClick
         Try
             SelectAllowance(DgAllowance)
-            If MdlMaintenance.allowanceName <> TxtAllowance.Text Then
-                BtnSaveAllowance.Enabled = True
-                Exit Sub
-            ElseIf MdlMaintenance.allowanceName = "" Then
-                BtnSaveAllowance.Enabled = True
-                Exit Sub
-            Else
-                BtnSaveAllowance.Enabled = False
-            End If
         Catch ex As Exception
         End Try
     End Sub
@@ -622,16 +499,6 @@ Public Class FrmMainte
         If String.IsNullOrEmpty(TxtAllowance.Text) Then
             MdlMaintenance.allowanceID = 0
         End If
-
-        If MdlMaintenance.allowanceName <> TxtAllowance.Text Then
-            BtnSaveAllowance.Enabled = True
-            Exit Sub
-        ElseIf MdlMaintenance.allowanceName = "" Then
-            BtnSaveAllowance.Enabled = True
-            Exit Sub
-        Else
-            BtnSaveAllowance.Enabled = False
-        End If
     End Sub
 
     Private Sub Panel14_Click(sender As Object, e As EventArgs) Handles Panel14.Click
@@ -645,13 +512,13 @@ Public Class FrmMainte
 
 #Region "Manage Position"
     Private Sub btnManagePos_Click(sender As Object, e As EventArgs) Handles btnManagePos.Click
-        'Try
-        If cbDept.SelectedIndex = -1 OrElse cbPos.SelectedIndex = -1 Then
-            MsgEmptyField()
-            Exit Sub
-        End If
+        Try
+            If cbDept.SelectedIndex = -1 OrElse cbPos.SelectedIndex = -1 Then
+                MsgEmptyField()
+                Exit Sub
+            End If
 
-        For Each row As DataGridViewRow In dgManageLeave.Rows
+            For Each row As DataGridViewRow In dgManageLeave.Rows
             'maximum leave
             Dim maximum As Integer = If(String.IsNullOrEmpty(row.Cells("days").Value.ToString), 0, row.Cells("days").Value)
             If Not IsNumeric(maximum) Then
@@ -685,9 +552,9 @@ Public Class FrmMainte
         Next
 
         Update_Leave(dgManageLeave, cbPos, dgManageAllowance)
-        'Catch ex As Exception
-        '    MessageBox.Show(ex.Message)
-        'End Try
+        Catch ex As Exception
+        MessageBox.Show(ex.Message)
+        End Try
 
     End Sub
 
@@ -741,15 +608,7 @@ Public Class FrmMainte
     Private Sub DgIncentives_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgIncentives.CellClick
         Try
             SelectIncentives(DgIncentives)
-            If MdlMaintenance.incentiveName <> TxtIncentives.Text Then
-                BtnSaveIncentives.Enabled = True
-                Exit Sub
-            ElseIf MdlMaintenance.incentiveName = "" Then
-                BtnSaveIncentives.Enabled = True
-                Exit Sub
-            Else
-                BtnSaveIncentives.Enabled = False
-            End If
+
         Catch ex As Exception
 
         End Try
@@ -796,15 +655,6 @@ Public Class FrmMainte
             MdlMaintenance.incentiveID = 0
         End If
 
-        If MdlMaintenance.incentiveName <> TxtIncentives.Text Then
-            BtnSaveIncentives.Enabled = True
-            Exit Sub
-        ElseIf MdlMaintenance.incentiveName = "" Then
-            BtnSaveIncentives.Enabled = True
-            Exit Sub
-        Else
-            BtnSaveIncentives.Enabled = False
-        End If
     End Sub
 
     Private Sub Panel20_Click(sender As Object, e As EventArgs) Handles Panel20.Click
@@ -1302,8 +1152,6 @@ Public Class FrmMainte
         TxtFirstname.Clear()
         TxtLastname.Clear()
         TxtUsername.Clear()
-        TxtPassword.Clear()
-        TxtConfirmPass.Clear()
         TxtLeave.Clear()
         TxtPosition.Clear()
         TxtAllowance.Clear()
@@ -1329,8 +1177,6 @@ Public Class FrmMainte
         TxtUsername.Clear()
         TxtRates.Clear()
         TxtRateClassification.Clear()
-        TxtPassword.Clear()
-        TxtConfirmPass.Clear()
         TxtPosition.Clear()
         TxtAllowance.Clear()
         TxtIncentives.Clear()
@@ -1353,8 +1199,6 @@ Public Class FrmMainte
         TxtFirstname.Clear()
         TxtLastname.Clear()
         TxtUsername.Clear()
-        TxtPassword.Clear()
-        TxtConfirmPass.Clear()
         TxtLeave.Clear()
         TxtRates.Clear()
         TxtRateClassification.Clear()
@@ -1380,8 +1224,6 @@ Public Class FrmMainte
         TxtFirstname.Clear()
         TxtLastname.Clear()
         TxtUsername.Clear()
-        TxtPassword.Clear()
-        TxtConfirmPass.Clear()
         TxtRates.Clear()
         TxtRateClassification.Clear()
         TxtLeave.Clear()
@@ -1406,8 +1248,6 @@ Public Class FrmMainte
         TxtFirstname.Clear()
         TxtLastname.Clear()
         TxtUsername.Clear()
-        TxtPassword.Clear()
-        TxtConfirmPass.Clear()
         TxtLeave.Clear()
         TxtAllowance.Clear()
         TxtHoliday.Clear()
@@ -1432,8 +1272,6 @@ Public Class FrmMainte
         TxtFirstname.Clear()
         TxtLastname.Clear()
         TxtUsername.Clear()
-        TxtPassword.Clear()
-        TxtConfirmPass.Clear()
         TxtLeave.Clear()
         TxtAllowance.Clear()
         TxtIncentives.Clear()
@@ -1458,8 +1296,6 @@ Public Class FrmMainte
         TxtFirstname.Clear()
         TxtLastname.Clear()
         TxtUsername.Clear()
-        TxtPassword.Clear()
-        TxtConfirmPass.Clear()
         TxtLeave.Clear()
         TxtAllowance.Clear()
         TxtIncentives.Clear()
@@ -1483,8 +1319,6 @@ Public Class FrmMainte
         TxtFirstname.Clear()
         TxtLastname.Clear()
         TxtUsername.Clear()
-        TxtPassword.Clear()
-        TxtConfirmPass.Clear()
         TxtLeave.Clear()
         TxtAllowance.Clear()
         TxtIncentives.Clear()
@@ -1506,8 +1340,6 @@ Public Class FrmMainte
         TxtFirstname.Clear()
         TxtLastname.Clear()
         TxtUsername.Clear()
-        TxtPassword.Clear()
-        TxtConfirmPass.Clear()
         TxtLeave.Clear()
         TxtAllowance.Clear()
         TxtIncentives.Clear()
@@ -1530,8 +1362,6 @@ Public Class FrmMainte
         TxtFirstname.Clear()
         TxtLastname.Clear()
         TxtUsername.Clear()
-        TxtPassword.Clear()
-        TxtConfirmPass.Clear()
         TxtLeave.Clear()
         TxtAllowance.Clear()
         TxtIncentives.Clear()
@@ -1556,8 +1386,6 @@ Public Class FrmMainte
         TxtFirstname.Clear()
         TxtLastname.Clear()
         TxtUsername.Clear()
-        TxtPassword.Clear()
-        TxtConfirmPass.Clear()
         TxtLeave.Clear()
         TxtAllowance.Clear()
         TxtIncentives.Clear()
@@ -1582,8 +1410,6 @@ Public Class FrmMainte
         TxtFirstname.Clear()
         TxtLastname.Clear()
         TxtUsername.Clear()
-        TxtPassword.Clear()
-        TxtConfirmPass.Clear()
         TxtLeave.Clear()
         TxtAllowance.Clear()
         TxtIncentives.Clear()
@@ -1615,8 +1441,6 @@ Public Class FrmMainte
         TxtFirstname.Clear()
         TxtLastname.Clear()
         TxtUsername.Clear()
-        TxtPassword.Clear()
-        TxtConfirmPass.Clear()
         MdlMaintenance.userID = 0
     End Sub
 #End Region

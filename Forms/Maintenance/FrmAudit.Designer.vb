@@ -110,6 +110,7 @@ Partial Class FrmAudit
         '
         'dateActed
         '
+        Me.dateActed.DataPropertyName = "dateActed"
         Me.dateActed.HeaderText = "Date"
         Me.dateActed.Name = "dateActed"
         Me.dateActed.ReadOnly = True
