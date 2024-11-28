@@ -70,13 +70,6 @@ Partial Class FrmMainte
         Me.Guna2TabControl1 = New Guna.UI2.WinForms.Guna2TabControl()
         Me.tabUser = New System.Windows.Forms.TabPage()
         Me.DgUser = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.userID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.fullName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.firstName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.lastName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.userName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.password = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.role = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel51 = New System.Windows.Forms.Panel()
         Me.Panel37 = New System.Windows.Forms.Panel()
         Me.Panel39 = New System.Windows.Forms.Panel()
@@ -291,6 +284,13 @@ Partial Class FrmMainte
         Me.BtnSaveVoluntary = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel45 = New System.Windows.Forms.Panel()
         Me.BtnDeleteVoluntary = New Guna.UI2.WinForms.Guna2Button()
+        Me.userID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fullName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.firstName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lastName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.userName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.password = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.role = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Guna2TabControl1.SuspendLayout()
         Me.tabUser.SuspendLayout()
         CType(Me.DgUser, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -463,57 +463,6 @@ Partial Class FrmMainte
         Me.DgUser.ThemeStyle.RowsStyle.Height = 24
         Me.DgUser.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DgUser.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        '
-        'userID
-        '
-        Me.userID.DataPropertyName = "userID"
-        Me.userID.HeaderText = "User ID"
-        Me.userID.Name = "userID"
-        Me.userID.ReadOnly = True
-        '
-        'fullName
-        '
-        Me.fullName.DataPropertyName = "fullName"
-        Me.fullName.HeaderText = "Name"
-        Me.fullName.Name = "fullName"
-        Me.fullName.ReadOnly = True
-        '
-        'firstName
-        '
-        Me.firstName.DataPropertyName = "firstName"
-        Me.firstName.HeaderText = "Firstname"
-        Me.firstName.Name = "firstName"
-        Me.firstName.ReadOnly = True
-        Me.firstName.Visible = False
-        '
-        'lastName
-        '
-        Me.lastName.DataPropertyName = "lastName"
-        Me.lastName.HeaderText = "Lastname"
-        Me.lastName.Name = "lastName"
-        Me.lastName.ReadOnly = True
-        Me.lastName.Visible = False
-        '
-        'userName
-        '
-        Me.userName.DataPropertyName = "userName"
-        Me.userName.HeaderText = "Username"
-        Me.userName.Name = "userName"
-        Me.userName.ReadOnly = True
-        '
-        'password
-        '
-        Me.password.DataPropertyName = "password"
-        Me.password.HeaderText = "Password"
-        Me.password.Name = "password"
-        Me.password.ReadOnly = True
-        '
-        'role
-        '
-        Me.role.DataPropertyName = "role"
-        Me.role.HeaderText = "Role"
-        Me.role.Name = "role"
-        Me.role.ReadOnly = True
         '
         'Panel51
         '
@@ -4056,6 +4005,58 @@ Partial Class FrmMainte
         Me.BtnDeleteVoluntary.TabIndex = 3
         Me.BtnDeleteVoluntary.Text = "DELETE"
         '
+        'userID
+        '
+        Me.userID.DataPropertyName = "userID"
+        Me.userID.HeaderText = "User ID"
+        Me.userID.Name = "userID"
+        Me.userID.ReadOnly = True
+        '
+        'fullName
+        '
+        Me.fullName.DataPropertyName = "fullName"
+        Me.fullName.HeaderText = "Name"
+        Me.fullName.Name = "fullName"
+        Me.fullName.ReadOnly = True
+        '
+        'firstName
+        '
+        Me.firstName.DataPropertyName = "firstName"
+        Me.firstName.HeaderText = "Firstname"
+        Me.firstName.Name = "firstName"
+        Me.firstName.ReadOnly = True
+        Me.firstName.Visible = False
+        '
+        'lastName
+        '
+        Me.lastName.DataPropertyName = "lastName"
+        Me.lastName.HeaderText = "Lastname"
+        Me.lastName.Name = "lastName"
+        Me.lastName.ReadOnly = True
+        Me.lastName.Visible = False
+        '
+        'userName
+        '
+        Me.userName.DataPropertyName = "userName"
+        Me.userName.HeaderText = "Username"
+        Me.userName.Name = "userName"
+        Me.userName.ReadOnly = True
+        '
+        'password
+        '
+        Me.password.DataPropertyName = "password"
+        Me.password.HeaderText = "Password"
+        Me.password.Name = "password"
+        Me.password.ReadOnly = True
+        Me.password.Visible = False
+        '
+        'role
+        '
+        Me.role.DataPropertyName = "role"
+        Me.role.HeaderText = "Role"
+        Me.role.Name = "role"
+        Me.role.ReadOnly = True
+        '
         'FrmMainte
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -4336,13 +4337,6 @@ Partial Class FrmMainte
     Friend WithEvents sssTotal As DataGridViewTextBoxColumn
     Friend WithEvents Panel50 As Panel
     Friend WithEvents DgUser As Guna.UI2.WinForms.Guna2DataGridView
-    Friend WithEvents userID As DataGridViewTextBoxColumn
-    Friend WithEvents fullName As DataGridViewTextBoxColumn
-    Friend WithEvents firstName As DataGridViewTextBoxColumn
-    Friend WithEvents lastName As DataGridViewTextBoxColumn
-    Friend WithEvents userName As DataGridViewTextBoxColumn
-    Friend WithEvents password As DataGridViewTextBoxColumn
-    Friend WithEvents role As DataGridViewTextBoxColumn
     Friend WithEvents Panel51 As Panel
     Friend WithEvents Panel39 As Panel
     Friend WithEvents TxtUsername As Guna.UI2.WinForms.Guna2TextBox
@@ -4351,4 +4345,11 @@ Partial Class FrmMainte
     Friend WithEvents Label28 As Label
     Friend WithEvents TxtLastname As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label27 As Label
+    Friend WithEvents userID As DataGridViewTextBoxColumn
+    Friend WithEvents fullName As DataGridViewTextBoxColumn
+    Friend WithEvents firstName As DataGridViewTextBoxColumn
+    Friend WithEvents lastName As DataGridViewTextBoxColumn
+    Friend WithEvents userName As DataGridViewTextBoxColumn
+    Friend WithEvents password As DataGridViewTextBoxColumn
+    Friend WithEvents role As DataGridViewTextBoxColumn
 End Class
