@@ -13,17 +13,20 @@ Public Class FrmSignUpPayroll
             MsgBox("Invalid input")
             Exit Sub
         End If
+        Try
+            RunCommand("Update tblusers set password=@password where username=@username")
+            With com
+                .Parameters.AddWithValue("@username", TxtUsername.Text.Trim)
+                .Parameters.AddWithValue("@password", TxtPassword.Text.Trim)
+                .ExecuteNonQuery()
+                .Parameters.Clear()
+                MsgBox("Password Updated")
+                FrmLogin.Show()
+                Me.Close()
+            End With
+        Catch ex As Exception
 
-        RunCommand("Update tblusers set password=@password where username=@username")
-        With com
-            .Parameters.AddWithValue("@username", TxtUsername.Text.Trim)
-            .Parameters.AddWithValue("@password", TxtPassword.Text.Trim)
-            .ExecuteNonQuery()
-            .Parameters.Clear()
-            MsgBox("Password Updated")
-            FrmLogin.Show()
-            Me.Close()
-        End With
+        End Try
 
     End Sub
 End Class

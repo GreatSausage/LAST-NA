@@ -105,12 +105,17 @@ Module MdlMaintenance
     End Sub
 
     Public Sub DeleteUser(userIDD As Integer)
-        Dim command As New MySqlCommand("UPDATE tblUsers SET status = 'Inactive' WHERE userID = @userID", connection)
-        command.Parameters.AddWithValue("@userID", userIDD)
-        command.ExecuteNonQuery()
-        MessageBox.Show("Payroll Staff has been deleted.")
-        userID = 0
-        Auditing($"{FrmMain.LblName.Text} deleted a Payroll Staff account: {firstname} {lastname}")
+        Try
+            Dim command As New MySqlCommand("UPDATE tblUsers SET status = 'Inactive' WHERE userID = @userID", connection)
+            command.Parameters.AddWithValue("@userID", userIDD)
+            command.ExecuteNonQuery()
+            MessageBox.Show("Payroll Staff has been deleted.")
+            userID = 0
+            Auditing($"{FrmMain.LblName.Text} deleted a Payroll Staff account: {firstname} {lastname}")
+
+        Catch ex As Exception
+
+        End Try
     End Sub
 
 #End Region
@@ -938,20 +943,25 @@ Module MdlMaintenance
     End Sub
 
     Public Sub DeleteTax()
-        Dim checkCommand As New MySqlCommand("SELECT COUNT(*) FROM tblTax", connection)
-        Dim count As Integer = checkCommand.ExecuteScalar()
-        If count = 0 Then
-            MessageBox.Show("This tax cannot deleted.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            FrmMainte.TxtTaxFixedAmount.Clear()
-            FrmMainte.TxtTaxMaxSalary.Clear()
-            FrmMainte.TxtTaxMinSalary.Clear()
-            FrmMainte.TxtTaxPercentage.Clear()
-            Exit Sub
-        End If
-        Dim command As New MySqlCommand("DELETE FROM tblTax ORDER BY taxID DESC LIMIT 1", connection)
-        command.ExecuteNonQuery()
-        MessageBox.Show("Tax deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Auditing($"{FrmMain.LblName.Text} deleted tax.")
+        Try
+            Dim checkCommand As New MySqlCommand("SELECT COUNT(*) FROM tblTax", connection)
+            Dim count As Integer = checkCommand.ExecuteScalar()
+            If count = 0 Then
+                MessageBox.Show("This tax cannot deleted.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                FrmMainte.TxtTaxFixedAmount.Clear()
+                FrmMainte.TxtTaxMaxSalary.Clear()
+                FrmMainte.TxtTaxMinSalary.Clear()
+                FrmMainte.TxtTaxPercentage.Clear()
+                Exit Sub
+            End If
+            Dim command As New MySqlCommand("DELETE FROM tblTax ORDER BY taxID DESC LIMIT 1", connection)
+            command.ExecuteNonQuery()
+            MessageBox.Show("Tax deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Auditing($"{FrmMain.LblName.Text} deleted tax.")
+
+        Catch ex As Exception
+
+        End Try
     End Sub
 
 #End Region

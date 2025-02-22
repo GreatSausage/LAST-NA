@@ -2958,7 +2958,7 @@ Partial Class FrmMainte
         Me.TxtTaxFixedAmount.HoverState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.TxtTaxFixedAmount.Location = New System.Drawing.Point(0, 200)
         Me.TxtTaxFixedAmount.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
-        Me.TxtTaxFixedAmount.MaxLength = 6
+        Me.TxtTaxFixedAmount.MaxLength = 10
         Me.TxtTaxFixedAmount.Name = "TxtTaxFixedAmount"
         Me.TxtTaxFixedAmount.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TxtTaxFixedAmount.PlaceholderText = ""
@@ -3320,7 +3320,7 @@ Partial Class FrmMainte
         Me.TxtSSSWISP.HoverState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.TxtSSSWISP.Location = New System.Drawing.Point(0, 279)
         Me.TxtSSSWISP.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
-        Me.TxtSSSWISP.MaxLength = 7
+        Me.TxtSSSWISP.MaxLength = 10
         Me.TxtSSSWISP.Name = "TxtSSSWISP"
         Me.TxtSSSWISP.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TxtSSSWISP.PlaceholderText = ""
@@ -4066,12 +4066,12 @@ Partial Class FrmMainte
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.ShowImageMargin = False
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(156, 48)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(131, 26)
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(155, 22)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(130, 22)
         Me.ToolStripMenuItem1.Text = "Reset Password"
         '
         'FrmMainte

@@ -308,158 +308,162 @@ Public Class ClassPayrollCalculation
         End Try
     End Sub
     Public Shared Sub GetGrossPay(cbemp As Guna2ComboBox, dg As Guna2DataGridView, txtgrosspay As Guna2TextBox)
+        Try
+            Dim employeeID As Integer = cbemp.SelectedValue
+            If employeeID = 0 Then
+                Exit Sub
+            End If
 
-        Dim employeeID As Integer = cbemp.SelectedValue
-        If employeeID = 0 Then
-            Exit Sub
-        End If
-
-        RunQuery("Select salary,daily from tblsalary WHERE employeeID='" & employeeID & "'")
-        Dim salary As Decimal = ds.Tables("querytable").Rows(0)(0)
-        Dim daily As Decimal = ds.Tables("querytable").Rows(0)(1)
+            RunQuery("Select salary,daily from tblsalary WHERE employeeID='" & employeeID & "'")
+            Dim salary As Decimal = ds.Tables("querytable").Rows(0)(0)
+            Dim daily As Decimal = ds.Tables("querytable").Rows(0)(1)
 
 
-        If compensationtype = "Daily" Then
-            Dim totalpay As Decimal = 0
-            For Each row As DataGridViewRow In dg.Rows
-                Dim dayclass As String = row.Cells("colClassification").Value
-                Dim holiday As String = row.Cells("colHoliday").Value
-                Dim recordentry As String = row.Cells("colReport").Value
-                'Regular Working Day
-                If dayclass = "With Duty" And holiday = "No Holiday" And recordentry = "Present" Then
-                    totalpay += salary
-                End If
+            If compensationtype = "Daily" Then
+                Dim totalpay As Decimal = 0
+                For Each row As DataGridViewRow In dg.Rows
+                    Dim dayclass As String = row.Cells("colClassification").Value
+                    Dim holiday As String = row.Cells("colHoliday").Value
+                    Dim recordentry As String = row.Cells("colReport").Value
+                    'Regular Working Day
+                    If dayclass = "With Duty" And holiday = "No Holiday" And recordentry = "Present" Then
+                        totalpay += salary
+                    End If
 
-                'Regular Working Day Pero naka Leave
-                If employmentstatus = "Regular" And dayclass = "With Duty" And holiday = "No Holiday" And recordentry = "On Leave" Then
-                    totalpay += salary
-                End If
+                    'Regular Working Day Pero naka Leave
+                    If employmentstatus = "Regular" And dayclass = "With Duty" And holiday = "No Holiday" And recordentry = "On Leave" Then
+                        totalpay += salary
+                    End If
 
-                'Special Holiday Pumasok
-                If dayclass = "With Duty" And holiday = "Special Holiday" And recordentry = "Present" Then
-                    totalpay += (salary * SpecialHolidayRate)
-                End If
+                    'Special Holiday Pumasok
+                    If dayclass = "With Duty" And holiday = "Special Holiday" And recordentry = "Present" Then
+                        totalpay += (salary * SpecialHolidayRate)
+                    End If
 
-                'Special Holiday Hindi Pumasok
-                If employmentstatus = "Regular" And dayclass = "With Duty" And holiday = "Special Holiday" And recordentry = "Absent" Then
-                    totalpay += salary
-                End If
+                    'Special Holiday Hindi Pumasok
+                    If employmentstatus = "Regular" And dayclass = "With Duty" And holiday = "Special Holiday" And recordentry = "Absent" Then
+                        totalpay += salary
+                    End If
 
-                'Regular Holiday Pumasok
-                If dayclass = "With Duty" And holiday = "Regular Holiday" And recordentry = "Present" Then
-                    totalpay += (salary * RegularHolidayRate)
-                End If
+                    'Regular Holiday Pumasok
+                    If dayclass = "With Duty" And holiday = "Regular Holiday" And recordentry = "Present" Then
+                        totalpay += (salary * RegularHolidayRate)
+                    End If
 
-                'Regular Holiday Hindi Pumasok
-                If employmentstatus = "Regular" And dayclass = "With Duty" And holiday = "Regular Holiday" And recordentry = "Absent" Then
-                    totalpay += salary
-                End If
+                    'Regular Holiday Hindi Pumasok
+                    If employmentstatus = "Regular" And dayclass = "With Duty" And holiday = "Regular Holiday" And recordentry = "Absent" Then
+                        totalpay += salary
+                    End If
 
-                'Double Holiday Pumasok
-                If dayclass = "With Duty" And holiday = "Double Holiday" And recordentry = "Present" Then
-                    totalpay += (salary * DoubleHolidayRate)
-                End If
+                    'Double Holiday Pumasok
+                    If dayclass = "With Duty" And holiday = "Double Holiday" And recordentry = "Present" Then
+                        totalpay += (salary * DoubleHolidayRate)
+                    End If
 
-                'Double Holiday Hindi Pumasok
-                If dayclass = "With Duty" And holiday = "Double Holiday" And recordentry = "Absent" Then
-                    totalpay += salary
-                End If
+                    'Double Holiday Hindi Pumasok
+                    If dayclass = "With Duty" And holiday = "Double Holiday" And recordentry = "Absent" Then
+                        totalpay += salary
+                    End If
 
-                'Day Off Pumasok
-                If dayclass = "Day Off" And holiday = "No Holiday" And recordentry = "Present" Then
-                    totalpay += (salary * RestDayRate)
-                End If
+                    'Day Off Pumasok
+                    If dayclass = "Day Off" And holiday = "No Holiday" And recordentry = "Present" Then
+                        totalpay += (salary * RestDayRate)
+                    End If
 
-                'Day Off and Special Holiday
-                If dayclass = "Day Off" And holiday = "Special Holiday" And recordentry = "Present" Then
-                    totalpay += (salary * (RestDayRate * SpecialHolidayRate))
-                End If
+                    'Day Off and Special Holiday
+                    If dayclass = "Day Off" And holiday = "Special Holiday" And recordentry = "Present" Then
+                        totalpay += (salary * (RestDayRate * SpecialHolidayRate))
+                    End If
 
-                'Day Off and Regular Holiday
-                If dayclass = "Day Off" And holiday = "Regular Holiday" And recordentry = "Present" Then
-                    totalpay += (salary * (RestDayRate * RegularHolidayRate))
-                End If
+                    'Day Off and Regular Holiday
+                    If dayclass = "Day Off" And holiday = "Regular Holiday" And recordentry = "Present" Then
+                        totalpay += (salary * (RestDayRate * RegularHolidayRate))
+                    End If
 
-                'Day Off and Double Holiday
-                If dayclass = "Day Off" And holiday = "Double Holiday" And recordentry = "Present" Then
-                    totalpay += (salary * (RestDayRate * DoubleHolidayRate))
-                End If
-            Next
-            txtgrosspay.Clear()
-            txtgrosspay.Text = totalpay
-        End If
+                    'Day Off and Double Holiday
+                    If dayclass = "Day Off" And holiday = "Double Holiday" And recordentry = "Present" Then
+                        totalpay += (salary * (RestDayRate * DoubleHolidayRate))
+                    End If
+                Next
+                txtgrosspay.Clear()
+                txtgrosspay.Text = totalpay
+            End If
 
-        If compensationtype = "Monthly" Then
-            Dim totalpay As Decimal = salary / 2
-            For Each row As DataGridViewRow In dg.Rows
-                Dim dayclass As String = row.Cells("colClassification").Value
-                Dim holiday As String = row.Cells("colHoliday").Value
-                Dim recordentry As String = row.Cells("colReport").Value
+            If compensationtype = "Monthly" Then
+                Dim totalpay As Decimal = salary / 2
+                For Each row As DataGridViewRow In dg.Rows
+                    Dim dayclass As String = row.Cells("colClassification").Value
+                    Dim holiday As String = row.Cells("colHoliday").Value
+                    Dim recordentry As String = row.Cells("colReport").Value
 
-                'Regular Working Day
-                If dayclass = "With Duty" And holiday = "No Holiday" And recordentry = "Absent" Then
-                    totalpay -= daily
-                End If
+                    'Regular Working Day
+                    If dayclass = "With Duty" And holiday = "No Holiday" And recordentry = "Absent" Then
+                        totalpay -= daily
+                    End If
 
-                'Regular Working Day Pero naka Leave
-                If employmentstatus = "Probationary" And dayclass = "With Duty" And holiday = "No Holiday" And recordentry = "On Leave" Then
-                    totalpay -= daily
-                End If
+                    'Regular Working Day Pero naka Leave
+                    If employmentstatus = "Probationary" And dayclass = "With Duty" And holiday = "No Holiday" And recordentry = "On Leave" Then
+                        totalpay -= daily
+                    End If
 
-                'Special Holiday Pumasok
-                If dayclass = "With Duty" And holiday = "Special Holiday" And recordentry = "Present" Then
-                    totalpay += (daily * SpecialHolidayRate)
-                End If
+                    'Special Holiday Pumasok
+                    If dayclass = "With Duty" And holiday = "Special Holiday" And recordentry = "Present" Then
+                        totalpay += (daily * SpecialHolidayRate)
+                    End If
 
-                'Special Holiday Hindi Pumasok
-                If employmentstatus = "Probationary" And dayclass = "With Duty" And holiday = "Special Holiday" And recordentry = "Absent" Then
-                    totalpay -= daily
-                End If
+                    'Special Holiday Hindi Pumasok
+                    If employmentstatus = "Probationary" And dayclass = "With Duty" And holiday = "Special Holiday" And recordentry = "Absent" Then
+                        totalpay -= daily
+                    End If
 
-                'Regular Holiday Pumasok
-                If dayclass = "With Duty" And holiday = "Regular Holiday" And recordentry = "Present" Then
-                    totalpay += (daily * RegularHolidayRate)
-                End If
+                    'Regular Holiday Pumasok
+                    If dayclass = "With Duty" And holiday = "Regular Holiday" And recordentry = "Present" Then
+                        totalpay += (daily * RegularHolidayRate)
+                    End If
 
-                'Regular Holiday Hindi Pumasok
-                If employmentstatus = "Regular" And dayclass = "With Duty" And holiday = "Regular Holiday" And recordentry = "Absent" Then
-                    totalpay += daily
-                End If
+                    'Regular Holiday Hindi Pumasok
+                    If employmentstatus = "Regular" And dayclass = "With Duty" And holiday = "Regular Holiday" And recordentry = "Absent" Then
+                        totalpay += daily
+                    End If
 
-                'Double Holiday Pumasok
-                If dayclass = "With Duty" And holiday = "Double Holiday" And recordentry = "Present" Then
-                    totalpay += (daily * DoubleHolidayRate)
-                End If
+                    'Double Holiday Pumasok
+                    If dayclass = "With Duty" And holiday = "Double Holiday" And recordentry = "Present" Then
+                        totalpay += (daily * DoubleHolidayRate)
+                    End If
 
-                'Double Holiday Hindi Pumasok
-                If employmentstatus = "Regular" And dayclass = "With Duty" And holiday = "Double Holiday" And recordentry = "Absent" Then
-                    totalpay += daily
-                End If
+                    'Double Holiday Hindi Pumasok
+                    If employmentstatus = "Regular" And dayclass = "With Duty" And holiday = "Double Holiday" And recordentry = "Absent" Then
+                        totalpay += daily
+                    End If
 
-                'Day Off Pumasok
-                If dayclass = "Day Off" And holiday = "No Holiday" And recordentry = "Present" Then
-                    totalpay += (daily * RestDayRate)
-                End If
+                    'Day Off Pumasok
+                    If dayclass = "Day Off" And holiday = "No Holiday" And recordentry = "Present" Then
+                        totalpay += (daily * RestDayRate)
+                    End If
 
-                'Day Off and Special Holiday
-                If dayclass = "Day Off" And holiday = "Special Holiday" And recordentry = "Present" Then
-                    totalpay += (daily * (RestDayRate * SpecialHolidayRate))
-                End If
+                    'Day Off and Special Holiday
+                    If dayclass = "Day Off" And holiday = "Special Holiday" And recordentry = "Present" Then
+                        totalpay += (daily * (RestDayRate * SpecialHolidayRate))
+                    End If
 
-                'Day Off and Regular Holiday
-                If dayclass = "Day Off" And holiday = "Regular Holiday" And recordentry = "Present" Then
-                    totalpay += (daily * (RestDayRate * RegularHolidayRate))
-                End If
+                    'Day Off and Regular Holiday
+                    If dayclass = "Day Off" And holiday = "Regular Holiday" And recordentry = "Present" Then
+                        totalpay += (daily * (RestDayRate * RegularHolidayRate))
+                    End If
 
-                'Day Off and Double Holiday
-                If dayclass = "Day Off" And holiday = "Double Holiday" And recordentry = "Present" Then
-                    totalpay += (daily * (RestDayRate * DoubleHolidayRate))
-                End If
+                    'Day Off and Double Holiday
+                    If dayclass = "Day Off" And holiday = "Double Holiday" And recordentry = "Present" Then
+                        totalpay += (daily * (RestDayRate * DoubleHolidayRate))
+                    End If
 
-            Next
-            txtgrosspay.Clear()
-            txtgrosspay.Text = totalpay
-        End If
+                Next
+                txtgrosspay.Clear()
+                txtgrosspay.Text = totalpay
+            End If
+
+        Catch ex As Exception
+
+        End Try
 
     End Sub
     Public Shared Sub GetOvertime(cbemp As Guna2ComboBox, dg As Guna2DataGridView, txtovertime As Guna2TextBox)
@@ -478,8 +482,6 @@ Public Class ClassPayrollCalculation
 
             Dim hourlyrate As Decimal = daily / noofhours
             Dim totalot As Decimal = 0
-            MsgBox(daily)
-            MsgBox(hourlyrate)
             For Each row As DataGridViewRow In dg.Rows
                 Dim otremarks As String = If(String.IsNullOrEmpty(row.Cells("colOtRemarks").Value.ToString), "For Approval", row.Cells("colOtRemarks").Value)
                 Dim noofot As Integer = If(String.IsNullOrEmpty(row.Cells("colOvertime").Value.ToString), 0, row.Cells("colOvertime").Value)
@@ -496,30 +498,21 @@ Public Class ClassPayrollCalculation
 
                 If dayclass = "With Duty" And holiday = "No Holiday" Then
                     totalot += ((hourlyrate * OtRegularRate) * noofot)
-                    MsgBox("With duty no holiday" & totalot)
                 ElseIf dayclass = "With Duty" And holiday = "Special Holiday" Then
                     totalot += ((hourlyrate * SpecialHolidayRate) * OtSpecialRate) * noofot
-                    MsgBox("With duty special" & totalot)
                 ElseIf dayclass = "With Duty" And holiday = "Regular Holiday" Then
                     totalot += ((hourlyrate * RegularHolidayRate) * OtSpecialRate) * noofot
-                    MsgBox("With duty regular" & totalot)
                 ElseIf dayclass = "With Duty" And holiday = "Double Holiday" Then
                     totalot += ((hourlyrate * DoubleHolidayRate) * OtSpecialRate) * noofot
-                    MsgBox("With duty double" & totalot)
                 ElseIf dayclass = "Day Off" And holiday = "No Holiday" Then
                     totalot += ((hourlyrate * RestDayRate) * OtSpecialRate) * noofot
-                    MsgBox("day off no holiday" & totalot)
                 ElseIf dayclass = "Day Off" And holiday = "Special Holiday" Then
                     totalot += (((hourlyrate * RestDayRate) * SpecialHolidayRate) * OtSpecialRate) * noofot
-                    MsgBox("day off special" & totalot)
                 ElseIf dayclass = "Day Off" And holiday = "Regular Holiday" Then
                     totalot += (((hourlyrate * RestDayRate) * RegularHolidayRate) * OtSpecialRate) * noofot
-                    MsgBox("day off regular" & totalot)
                 ElseIf dayclass = "Day Off" And holiday = "Double Holiday" Then
                     totalot += (((hourlyrate * RestDayRate) * DoubleHolidayRate) * OtSpecialRate) * noofot
-                    MsgBox("day off double" & totalot)
                 End If
-                MsgBox(totalot)
             Next
             txtovertime.Clear()
             txtovertime.Text = totalot
@@ -707,23 +700,20 @@ Public Class ClassPayrollCalculation
 
         End Try
     End Sub
-    Public Shared Sub GetTax(netpay As Guna2TextBox, txttax As Guna2TextBox)
+    Public Shared Sub GetTax(grosspay As Guna2TextBox, txttax As Guna2TextBox, txtsss As Guna2TextBox, txtphilhealth As Guna2TextBox, txtpagibig As Guna2TextBox)
         Try
-            If isPayout = "Yes" Then
-                RunQuery("Select * from tbltax WHERE minSalary <= '" & netpay.Text & "' and maxSalary >= '" & netpay.Text & "'")
-                If ds.Tables("querytable").Rows.Count > 0 Then
-                    Dim minSalary As Decimal = ds.Tables("querytable").Rows(0)(1)
-                    Dim fixedamount As Decimal = ds.Tables("querytable").Rows(0)(3)
-                    Dim percent As Integer = ds.Tables("querytable").Rows(0)(4)
+            Dim taxableamount As Decimal = Val(grosspay.Text) - (Val(txtsss.Text) + Val(txtphilhealth.Text) + Val(txtpagibig.Text))
+            RunQuery("Select * from tbltax WHERE minSalary <= '" & taxableamount & "' and maxSalary >= '" & taxableamount & "'")
+            If ds.Tables("querytable").Rows.Count > 0 Then
+                Dim minSalary As Decimal = ds.Tables("querytable").Rows(0)(1)
+                Dim fixedamount As Decimal = ds.Tables("querytable").Rows(0)(3)
+                Dim percent As Integer = ds.Tables("querytable").Rows(0)(4) / 100
 
-                    Dim taxable As Decimal = Val(netpay.Text) - Val(minSalary)
-                    Dim taxpercent As Decimal = Val(taxable) * (Val(percent) / 100)
-                    Dim total As Decimal = Val(fixedamount) + Val(taxpercent)
-                    txttax.Clear()
-                    txttax.Text = Val(total)
-                End If
-            Else
-                txttax.Text = 0
+                Dim taxpercent As Decimal = (taxableamount - minSalary) * percent
+                Dim total = fixedamount + taxpercent
+
+                txttax.Clear()
+                txttax.Text = Val(total)
             End If
         Catch ex As Exception
             MsgBox(ex.Message)

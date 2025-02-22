@@ -19,8 +19,8 @@ Public Class FrmEmployee
 
     Private Sub BtnSaveEmployee_Click(sender As Object, e As EventArgs) Handles BtnSaveEmployee.Click
 
-        'Try
-        Dim lastName As String = StrConv(TxtLastName.Text, VbStrConv.ProperCase)
+        Try
+            Dim lastName As String = StrConv(TxtLastName.Text, VbStrConv.ProperCase)
             Dim firstName As String = StrConv(TxtFirstName.Text, VbStrConv.ProperCase)
             Dim middleName As String = StrConv(TxtMiddleName.Text, VbStrConv.ProperCase)
 
@@ -74,9 +74,9 @@ Public Class FrmEmployee
 
             ClassEmployee.NewEmployee(TxtRFID, TxtLastName, TxtFirstName, TxtMiddleName, CbDepartment, CbPosition, TxtSalary, cbStatus)
             ClassEmployee.LoadEmployee(DGEmployee)
-        'Catch ex As MySqlException
-        '    MsgBox(ex.Message)
-        'End Try
+        Catch ex As MySqlException
+            MsgBox(ex.Message)
+        End Try
     End Sub
     Private Sub TPEmployeeList_Enter(sender As Object, e As EventArgs) Handles TPEmployeeList.Enter
         ClassEmployee.LoadEmployee(DGEmployee)
@@ -180,13 +180,18 @@ Public Class FrmEmployee
         End Try
     End Sub
     Private Sub DataGridView1_MouseDown(sender As Object, e As MouseEventArgs) Handles DGEmployee.MouseDown
-        ' Check if the right mouse button is clicked
-        If e.Button = MouseButtons.Right Then
-            ' Check if any row is selected
-            If DGEmployee.SelectedRows.Count > 0 Then
-                ' Show the ContextMenuStrip at the mouse click location
-                ContextMenuStrip1.Show(DGEmployee, e.Location)
+        Try
+            ' Check if the right mouse button is clicked
+            If e.Button = MouseButtons.Right Then
+                ' Check if any row is selected
+                If DGEmployee.SelectedRows.Count > 0 Then
+                    ' Show the ContextMenuStrip at the mouse click location
+                    ContextMenuStrip1.Show(DGEmployee, e.Location)
+                End If
             End If
-        End If
+
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class

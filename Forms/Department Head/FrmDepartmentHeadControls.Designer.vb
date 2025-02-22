@@ -121,7 +121,6 @@ Partial Class FrmDepartmentHeadControls
         Me.manageRemainingLeave = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Panel9 = New System.Windows.Forms.Panel()
-        Me.Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
         Me.BtnLeaveSave = New Guna.UI2.WinForms.Guna2Button()
         Me.TxtLeaveReason = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -1321,7 +1320,6 @@ Partial Class FrmDepartmentHeadControls
         '
         'Panel9
         '
-        Me.Panel9.Controls.Add(Me.Guna2Button1)
         Me.Panel9.Controls.Add(Me.BtnLeaveSave)
         Me.Panel9.Controls.Add(Me.TxtLeaveReason)
         Me.Panel9.Controls.Add(Me.Label10)
@@ -1337,23 +1335,6 @@ Partial Class FrmDepartmentHeadControls
         Me.Panel9.Name = "Panel9"
         Me.Panel9.Size = New System.Drawing.Size(250, 477)
         Me.Panel9.TabIndex = 31
-        '
-        'Guna2Button1
-        '
-        Me.Guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.Guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.Guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.Guna2Button1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Guna2Button1.FillColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(189, Byte), Integer), CType(CType(50, Byte), Integer))
-        Me.Guna2Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.Guna2Button1.ForeColor = System.Drawing.Color.White
-        Me.Guna2Button1.Location = New System.Drawing.Point(0, 395)
-        Me.Guna2Button1.Margin = New System.Windows.Forms.Padding(2)
-        Me.Guna2Button1.Name = "Guna2Button1"
-        Me.Guna2Button1.Size = New System.Drawing.Size(245, 41)
-        Me.Guna2Button1.TabIndex = 42
-        Me.Guna2Button1.Text = "DEBUG"
         '
         'BtnLeaveSave
         '
@@ -1919,6 +1900,5 @@ Partial Class FrmDepartmentHeadControls
     Friend WithEvents manageTypeofLeave As DataGridViewTextBoxColumn
     Friend WithEvents maximumLeave As DataGridViewTextBoxColumn
     Friend WithEvents manageRemainingLeave As DataGridViewTextBoxColumn
-    Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Label19 As Label
 End Class

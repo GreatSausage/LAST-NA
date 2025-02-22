@@ -174,55 +174,60 @@ Public Class FrmMainte
 
 
     Private Sub BtnDeleteDepartment_Click(sender As Object, e As EventArgs) Handles BtnDeleteDepartment.Click
-        'pag empty ang textbox
-        If String.IsNullOrEmpty(TxtDepartment.Text) Then
-            MsgEmptyField()
-            Exit Sub
-            'pag di parehas ang textbox sa selectedrow
-        ElseIf MdlMaintenance.departmentName <> TxtDepartment.Text Then
-            MessageBox.Show("Selected department doesn't match.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            MdlMaintenance.departmentID = 0
-            TxtDepartment.Clear()
-            DgDepartment.ClearSelection()
-            MdlMaintenance.departmentName = ""
-            Exit Sub
-            'pag nagdedelete nang di nagselect sa datagrid
-        ElseIf MdlMaintenance.departmentID = 0 AndAlso Not String.IsNullOrEmpty(TxtDepartment.Text) Then
-            MessageBox.Show("This department doesn't exist.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            TxtDepartment.Clear()
-            MdlMaintenance.departmentName = ""
-            Exit Sub
-            'multidelete 
-        ElseIf DgDepartment.SelectedRows.Count > 0 AndAlso String.IsNullOrEmpty(TxtDepartment.Text) Then
-            If MessageBox.Show("Are you sure you want to delete this department?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                UpdateDepartmentStatus(DgDepartment)
-                DisplayDepartmentInForm()
-                Dim dt As DataTable = DisplayDepartment()
-                Dim dtDepartment As DataTable = DisplayDepartment()
-                CbDepartment.DataSource = dtDepartment
-                CbDepartment.ValueMember = "departmentID"
-                CbDepartment.DisplayMember = "departmentName"
+        Try
+            'pag empty ang textbox
+            If String.IsNullOrEmpty(TxtDepartment.Text) Then
+                MsgEmptyField()
+                Exit Sub
+                'pag di parehas ang textbox sa selectedrow
+            ElseIf MdlMaintenance.departmentName <> TxtDepartment.Text Then
+                MessageBox.Show("Selected department doesn't match.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MdlMaintenance.departmentID = 0
+                TxtDepartment.Clear()
+                DgDepartment.ClearSelection()
+                MdlMaintenance.departmentName = ""
+                Exit Sub
+                'pag nagdedelete nang di nagselect sa datagrid
+            ElseIf MdlMaintenance.departmentID = 0 AndAlso Not String.IsNullOrEmpty(TxtDepartment.Text) Then
+                MessageBox.Show("This department doesn't exist.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 TxtDepartment.Clear()
                 MdlMaintenance.departmentName = ""
                 Exit Sub
-            End If
-            Exit Sub
-            'single delete
-        ElseIf MdlMaintenance.departmentID <> 0 Then
-            If MessageBox.Show("Are you sure you want to delete this department?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                UpdateDepartmentStatus(DgDepartment)
-                DisplayDepartmentInForm()
-                Dim dtDepartment As DataTable = DisplayDepartment()
-                CbDepartment.DataSource = dtDepartment
-                CbDepartment.ValueMember = "departmentID"
-                CbDepartment.DisplayMember = "departmentName"
-                MdlMaintenance.departmentName = ""
-                TxtDepartment.Clear()
+                'multidelete 
+            ElseIf DgDepartment.SelectedRows.Count > 0 AndAlso String.IsNullOrEmpty(TxtDepartment.Text) Then
+                If MessageBox.Show("Are you sure you want to delete this department?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    UpdateDepartmentStatus(DgDepartment)
+                    DisplayDepartmentInForm()
+                    Dim dt As DataTable = DisplayDepartment()
+                    Dim dtDepartment As DataTable = DisplayDepartment()
+                    CbDepartment.DataSource = dtDepartment
+                    CbDepartment.ValueMember = "departmentID"
+                    CbDepartment.DisplayMember = "departmentName"
+                    TxtDepartment.Clear()
+                    MdlMaintenance.departmentName = ""
+                    Exit Sub
+                End If
                 Exit Sub
-            End If
-            Exit Sub
+                'single delete
+            ElseIf MdlMaintenance.departmentID <> 0 Then
+                If MessageBox.Show("Are you sure you want to delete this department?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    UpdateDepartmentStatus(DgDepartment)
+                    DisplayDepartmentInForm()
+                    Dim dtDepartment As DataTable = DisplayDepartment()
+                    CbDepartment.DataSource = dtDepartment
+                    CbDepartment.ValueMember = "departmentID"
+                    CbDepartment.DisplayMember = "departmentName"
+                    MdlMaintenance.departmentName = ""
+                    TxtDepartment.Clear()
+                    Exit Sub
+                End If
+                Exit Sub
 
-        End If
+            End If
+
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub TxtDepartment_TextChanged(sender As Object, e As EventArgs) Handles TxtDepartment.TextChanged
@@ -275,40 +280,44 @@ Public Class FrmMainte
     End Sub
 
     Private Sub BtnDeleteLeave_Click(sender As Object, e As EventArgs) Handles BtnDeleteLeave.Click
+        Try
+            If String.IsNullOrEmpty(TxtLeave.Text) Then
+                MsgEmptyField()
+                Exit Sub
+            ElseIf MdlMaintenance.leaveName <> TxtLeave.Text Then
+                MessageBox.Show("Selected leave doesn't match.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MdlMaintenance.leaveID = 0
+                TxtLeave.Clear()
+                dgLeave.ClearSelection()
+                MdlMaintenance.leaveName = ""
+                Exit Sub
+            ElseIf MdlMaintenance.leaveID = 0 AndAlso Not String.IsNullOrEmpty(TxtDepartment.Text) Then
+                MessageBox.Show("This leave type doesn't exist.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                TxtLeave.Clear()
+                MdlMaintenance.leaveName = ""
+                Exit Sub
+            ElseIf dgLeave.SelectedRows.Count > 0 AndAlso String.IsNullOrEmpty(TxtLeave.Text) Then
+                If MessageBox.Show("Are you sure you want to delete this leave?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    UpdateLeaveStatus(dgLeave)
+                    DisplayLeaveInForm()
+                    TxtLeave.Clear()
+                    MdlMaintenance.leaveName = ""
+                    Exit Sub
+                End If
+                Exit Sub
+            ElseIf MdlMaintenance.leaveID <> 0 Then
+                If MessageBox.Show("Are you sure you want to delete this leave?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    UpdateLeaveStatus(dgLeave)
+                    DisplayLeaveInForm()
+                    TxtLeave.Clear()
+                    MdlMaintenance.leaveName = ""
+                    Exit Sub
+                End If
+            End If
 
-        If String.IsNullOrEmpty(TxtLeave.Text) Then
-            MsgEmptyField()
-            Exit Sub
-        ElseIf MdlMaintenance.leaveName <> TxtLeave.Text Then
-            MessageBox.Show("Selected leave doesn't match.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            MdlMaintenance.leaveID = 0
-            TxtLeave.Clear()
-            dgLeave.ClearSelection()
-            MdlMaintenance.leaveName = ""
-            Exit Sub
-        ElseIf MdlMaintenance.leaveID = 0 AndAlso Not String.IsNullOrEmpty(TxtDepartment.Text) Then
-            MessageBox.Show("This leave type doesn't exist.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            TxtLeave.Clear()
-            MdlMaintenance.leaveName = ""
-            Exit Sub
-        ElseIf dgLeave.SelectedRows.Count > 0 AndAlso String.IsNullOrEmpty(TxtLeave.Text) Then
-            If MessageBox.Show("Are you sure you want to delete this leave?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                UpdateLeaveStatus(dgLeave)
-                DisplayLeaveInForm()
-                TxtLeave.Clear()
-                MdlMaintenance.leaveName = ""
-                Exit Sub
-            End If
-            Exit Sub
-        ElseIf MdlMaintenance.leaveID <> 0 Then
-            If MessageBox.Show("Are you sure you want to delete this leave?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                UpdateLeaveStatus(dgLeave)
-                DisplayLeaveInForm()
-                TxtLeave.Clear()
-                MdlMaintenance.leaveName = ""
-                Exit Sub
-            End If
-        End If
+        Catch ex As Exception
+
+        End Try
 
     End Sub
 

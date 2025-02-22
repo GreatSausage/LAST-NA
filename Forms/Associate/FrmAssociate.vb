@@ -32,18 +32,23 @@ Public Class FrmAssociate
     Dim difference As Integer = 0
 
     Private Sub CBLeaveType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBLeaveType.SelectedIndexChanged
-        If DGLeaveCount.SelectedRows.Count > 0 Then
-            For Each row As DataGridViewRow In DGLeaveCount.Rows
-                If CBLeaveType.Text = row.Cells("manageTypeOfLeave").Value Then
-                    MsgBox(row.Cells("manageTypeOfLeave").Value)
-                    remainingLeavee = row.Cells("remainingLeave").Value
-                    MsgBox(remainingLeavee)
-                    Dim dtDiff As TimeSpan = DTPLeaveTo.Value.AddDays(1) - DTPLeaveFrom.Value
-                    difference = dtDiff.Days
-                    MsgBox(dtDiff.Days)
-                End If
-            Next
-        End If
+        Try
+            If DGLeaveCount.SelectedRows.Count > 0 Then
+                For Each row As DataGridViewRow In DGLeaveCount.Rows
+                    If CBLeaveType.Text = row.Cells("manageTypeOfLeave").Value Then
+                        MsgBox(row.Cells("manageTypeOfLeave").Value)
+                        remainingLeavee = row.Cells("remainingLeave").Value
+                        MsgBox(remainingLeavee)
+                        Dim dtDiff As TimeSpan = DTPLeaveTo.Value.AddDays(1) - DTPLeaveFrom.Value
+                        difference = dtDiff.Days
+                        MsgBox(dtDiff.Days)
+                    End If
+                Next
+            End If
+
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnLeaveSave.Click
@@ -102,28 +107,33 @@ Public Class FrmAssociate
     End Sub
 
     Private Sub DGSalaryAndPaySlip_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGSalaryAndPaySlip.CellContentClick
-        ' Check if the clicked cell is in the button column
-        If e.ColumnIndex = DGSalaryAndPaySlip.Columns("btnViewAndPrint").Index AndAlso e.RowIndex >= 0 Then
-            Dim payrollID As String = DGSalaryAndPaySlip.Rows(e.RowIndex).Cells("colPayrollPeriodID").Value.ToString()
-            dt = New DataTable("DT_Department")
-            dt.Clear()
+        Try
+            ' Check if the clicked cell is in the button column
+            If e.ColumnIndex = DGSalaryAndPaySlip.Columns("btnViewAndPrint").Index AndAlso e.RowIndex >= 0 Then
+                Dim payrollID As String = DGSalaryAndPaySlip.Rows(e.RowIndex).Cells("colPayrollPeriodID").Value.ToString()
+                dt = New DataTable("DT_Department")
+                dt.Clear()
 
-            adp = New MySqlDataAdapter("Select CONCAT(pp.datefrom,' to ',pp.dateto) as payrollperiod, e.employeeNumber, CONCAT(e.firstname,' ',e.middlename,' ',e.lastname) as name,
+                adp = New MySqlDataAdapter("Select CONCAT(pp.datefrom,' to ',pp.dateto) as payrollperiod, e.employeeNumber, CONCAT(e.firstname,' ',e.middlename,' ',e.lastname) as name,
                                         p.overtime,p.allowance,p.incentives,p.nightdifferential,p.late,p.undertime,p.voluntary,p.sss,p.philhealth,p.pagibig,p.tax,p.totalincrease,
                                         p.totaldeduc,p.grosspay, (p.totalincrease + p.grosspay) as totalearning, p.netpay from tblpayrollperiod pp
                                         LEFT JOIN tblpayroll p on p.payrollperiodID = pp.payrollperiodID
                                         LEFT JOIn tblemployee e on e.employeeID = p.employeeID
                                         WHERE p.payrollID = '" & payrollID & "'", conn)
-            adp.Fill(dt)
+                adp.Fill(dt)
 
 
-            Dim crystal As New CRPaySlip
-            crystal.SetDataSource(dt)
-            FrmPrinting.CRVPrinting.ReportSource = crystal
-            FrmPrinting.Show()
-            FrmMain.Enabled = False
-        End If
+                Dim crystal As New CRPaySlip
+                crystal.SetDataSource(dt)
+                FrmPrinting.CRVPrinting.ReportSource = crystal
+                FrmPrinting.Show()
+                FrmMain.Enabled = False
+            End If
 
+
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub Guna2Button4_Click(sender As Object, e As EventArgs) Handles Guna2Button4.Click

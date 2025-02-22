@@ -16,7 +16,7 @@ Public Class ClassLogin
             End If
 
 
-            RunQuery("Select * from tblusers where username= '" & username & "' and password='" & password & "'")
+            RunQuery("Select * from tblusers where username= '" & username & "' and password='" & password & "' and status = 'Active'")
             If ds.Tables("querytable").Rows.Count > 0 Then
                 usersid = ds.Tables("querytable").Rows(0)(0)
                 Dim adminname As String = ds.Tables("querytable").Rows(0)(1) & " " & ds.Tables("querytable").Rows(0)(2)

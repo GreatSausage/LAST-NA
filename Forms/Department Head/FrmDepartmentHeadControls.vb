@@ -46,40 +46,44 @@ Public Class FrmDepartmentHeadControls
             MessageBox.Show("Invalid time format.")
             Exit Sub
         End If
+        Try
+            ' Parse times into DateTime objects
+            Dim timeIn As DateTime
+            Dim timeOut As DateTime
+            Dim breakIn As DateTime
+            Dim breakOut As DateTime
 
-        ' Parse times into DateTime objects
-        Dim timeIn As DateTime
-        Dim timeOut As DateTime
-        Dim breakIn As DateTime
-        Dim breakOut As DateTime
-
-        If DateTime.TryParse(MtbTimeIn.Text, timeIn) AndAlso
+            If DateTime.TryParse(MtbTimeIn.Text, timeIn) AndAlso
         DateTime.TryParse(MtbTimeOut.Text, timeOut) AndAlso
         DateTime.TryParse(mtbBreakin.Text, breakIn) AndAlso
         DateTime.TryParse(mtbBreakOut.Text, breakOut) Then
 
-            ' Validate that break times are within the range of time in and time out
-            If breakIn < timeIn OrElse breakIn > timeOut Then
-                MessageBox.Show("Break In time must be within Time In and Time Out range.")
+                ' Validate that break times are within the range of time in and time out
+                If breakIn < timeIn OrElse breakIn > timeOut Then
+                    MessageBox.Show("Break In time must be within Time In and Time Out range.")
+                    Exit Sub
+                End If
+
+                If breakOut < timeIn OrElse breakOut > timeOut Then
+                    MessageBox.Show("Break Out time must be within Time In and Time Out range.")
+                    Exit Sub
+                End If
+
+                ' Ensure Break In is before Break Out
+                If breakIn >= breakOut Then
+                    MessageBox.Show("Break In time must be earlier than Break Out time.")
+                    Exit Sub
+                End If
+            Else
+                MessageBox.Show("One or more time values could not be parsed.")
                 Exit Sub
             End If
 
-            If breakOut < timeIn OrElse breakOut > timeOut Then
-                MessageBox.Show("Break Out time must be within Time In and Time Out range.")
-                Exit Sub
-            End If
+            ClassDepartmentHeadControls.NewSchedule(CbEmployees, CLBSchedule, MtbTimeIn, MtbTimeOut, mtbBreakin, mtbBreakOut)
 
-            ' Ensure Break In is before Break Out
-            If breakIn >= breakOut Then
-                MessageBox.Show("Break In time must be earlier than Break Out time.")
-                Exit Sub
-            End If
-        Else
-            MessageBox.Show("One or more time values could not be parsed.")
-            Exit Sub
-        End If
+        Catch ex As Exception
 
-        ClassDepartmentHeadControls.NewSchedule(CbEmployees, CLBSchedule, MtbTimeIn, MtbTimeOut, mtbBreakin, mtbBreakOut)
+        End Try
     End Sub
 
     Private Sub FrmDepartmentHeadControls_Resize(sender As Object, e As EventArgs) Handles Me.Resize
@@ -89,60 +93,75 @@ Public Class FrmDepartmentHeadControls
         End With
     End Sub
     Private Sub CbEmployees_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbEmployees.SelectedIndexChanged
-        ClassDepartmentHeadControls.LoadSchedule(CbEmployees, CLBSchedule, MtbTimeIn, MtbTimeOut, mtbBreakin, mtbBreakOut)
+        Try
+            ClassDepartmentHeadControls.LoadSchedule(CbEmployees, CLBSchedule, MtbTimeIn, MtbTimeOut, mtbBreakin, mtbBreakOut)
+
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub DGFiledLeave_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGFiledLeave.CellContentClick
-        If e.RowIndex >= 0 Then
-            If e.ColumnIndex = DGFiledLeave.Columns("Approve").Index Then
-                ' Get the Filed Leave ID of the selected row
-                Dim filedLeaveID As Integer = Convert.ToInt32(DGFiledLeave.Rows(e.RowIndex).Cells("Filed Leave ID").Value)
+        Try
+            If e.RowIndex >= 0 Then
+                If e.ColumnIndex = DGFiledLeave.Columns("Approve").Index Then
+                    ' Get the Filed Leave ID of the selected row
+                    Dim filedLeaveID As Integer = Convert.ToInt32(DGFiledLeave.Rows(e.RowIndex).Cells("Filed Leave ID").Value)
 
-                If MsgBox("Are you sure you want to approve the leave filed?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-                    ClassDepartmentHeadControls.ApproveLeave(filedLeaveID)
-                    Dim name As String = DGFiledLeave.Rows(e.RowIndex).Cells("Full Name").Value.ToString
-                    Auditing($"{LblName.Text} approved {name}'s leave.")
-                    DGFiledLeave.Rows.RemoveAt(e.RowIndex)
+                    If MsgBox("Are you sure you want to approve the leave filed?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                        ClassDepartmentHeadControls.ApproveLeave(filedLeaveID)
+                        Dim name As String = DGFiledLeave.Rows(e.RowIndex).Cells("Full Name").Value.ToString
+                        Auditing($"{LblName.Text} approved {name}'s leave.")
+                        DGFiledLeave.Rows.RemoveAt(e.RowIndex)
+                    End If
+
+                ElseIf e.ColumnIndex = DGFiledLeave.Columns("Decline").Index Then
+                    ' Get the Filed Leave ID of the selected row
+                    Dim filedLeaveID As Integer = Convert.ToInt32(DGFiledLeave.Rows(e.RowIndex).Cells("Filed Leave ID").Value)
+                    If MsgBox("Are you sure you want to decline the leave filed?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                        ClassDepartmentHeadControls.DeclineLeave(filedLeaveID)
+                        Dim name As String = DGFiledLeave.Rows(e.RowIndex).Cells("Full Name").Value.ToString
+                        Auditing($"{LblName.Text} approved {name}'s leave.")
+                        DGFiledLeave.Rows.RemoveAt(e.RowIndex)
+                    End If
+
                 End If
-
-            ElseIf e.ColumnIndex = DGFiledLeave.Columns("Decline").Index Then
-                ' Get the Filed Leave ID of the selected row
-                Dim filedLeaveID As Integer = Convert.ToInt32(DGFiledLeave.Rows(e.RowIndex).Cells("Filed Leave ID").Value)
-                If MsgBox("Are you sure you want to decline the leave filed?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-                    ClassDepartmentHeadControls.DeclineLeave(filedLeaveID)
-                    Dim name As String = DGFiledLeave.Rows(e.RowIndex).Cells("Full Name").Value.ToString
-                    Auditing($"{LblName.Text} approved {name}'s leave.")
-                    DGFiledLeave.Rows.RemoveAt(e.RowIndex)
-                End If
-
             End If
-        End If
+
+        Catch ex As Exception
+
+        End Try
     End Sub
     Private Sub DGFiledFTIO_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGFiledFTIO.CellContentClick
-        If e.RowIndex >= 0 Then
-            If e.ColumnIndex = DGFiledFTIO.Columns("Approve").Index Then
-                ' Get the Filed FTIO ID of the selected row
-                Dim FTIOID As Integer = Convert.ToInt32(DGFiledFTIO.Rows(e.RowIndex).Cells("FTIO ID").Value)
+        Try
+            If e.RowIndex >= 0 Then
+                If e.ColumnIndex = DGFiledFTIO.Columns("Approve").Index Then
+                    ' Get the Filed FTIO ID of the selected row
+                    Dim FTIOID As Integer = Convert.ToInt32(DGFiledFTIO.Rows(e.RowIndex).Cells("FTIO ID").Value)
 
-                If MsgBox("Are you sure you want to approve the FTIO filed?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-                    ClassDepartmentHeadControls.ApproveFTIO(FTIOID)
-                    Dim name As String = DGFiledFTIO.Rows(e.RowIndex).Cells("Full Name").Value.ToString
-                    Auditing($"{LblName.Text} approved {name}'s FTIO.")
-                    DGFiledFTIO.Rows.RemoveAt(e.RowIndex)
+                    If MsgBox("Are you sure you want to approve the FTIO filed?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                        ClassDepartmentHeadControls.ApproveFTIO(FTIOID)
+                        Dim name As String = DGFiledFTIO.Rows(e.RowIndex).Cells("Full Name").Value.ToString
+                        Auditing($"{LblName.Text} approved {name}'s FTIO.")
+                        DGFiledFTIO.Rows.RemoveAt(e.RowIndex)
+                    End If
+
+                ElseIf e.ColumnIndex = DGFiledFTIO.Columns("Decline").Index Then
+                    ' Get the Filed FTIO ID of the selected row
+                    Dim FTIOID As Integer = Convert.ToInt32(DGFiledFTIO.Rows(e.RowIndex).Cells("FTIO ID").Value)
+                    If MsgBox("Are you sure you want to decline the FTIO filed?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                        ClassDepartmentHeadControls.DeclineFTIO(FTIOID)
+                        Dim name As String = DGFiledFTIO.Rows(e.RowIndex).Cells("Full Name").Value.ToString
+                        Auditing($"{LblName.Text} declined {name}'s FTIO.")
+                        DGFiledFTIO.Rows.RemoveAt(e.RowIndex)
+                    End If
+
                 End If
-
-            ElseIf e.ColumnIndex = DGFiledFTIO.Columns("Decline").Index Then
-                ' Get the Filed FTIO ID of the selected row
-                Dim FTIOID As Integer = Convert.ToInt32(DGFiledFTIO.Rows(e.RowIndex).Cells("FTIO ID").Value)
-                If MsgBox("Are you sure you want to decline the FTIO filed?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-                    ClassDepartmentHeadControls.DeclineFTIO(FTIOID)
-                    Dim name As String = DGFiledFTIO.Rows(e.RowIndex).Cells("Full Name").Value.ToString
-                    Auditing($"{LblName.Text} declined {name}'s FTIO.")
-                    DGFiledFTIO.Rows.RemoveAt(e.RowIndex)
-                End If
-
             End If
-        End If
+
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub DGOvertime_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGOvertime.CellContentClick
@@ -289,7 +308,4 @@ Public Class FrmDepartmentHeadControls
         ClassDepartmentHeadControls.LoadMyFiledLeave(DGLeaveFiled)
     End Sub
 
-    Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
-
-    End Sub
 End Class

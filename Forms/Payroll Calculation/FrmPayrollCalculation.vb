@@ -65,7 +65,7 @@
         ClassPayrollCalculation.GetSSS(TxtGrossPay, TxtSSS)
         ClassPayrollCalculation.GetPhilhealth(TxtGrossPay, TxtPhilHealth)
         ClassPayrollCalculation.GetPagIbig(TxtPagIbig)
-        ClassPayrollCalculation.GetTax(TxtGrossPay, TxtTax)
+        ClassPayrollCalculation.GetTax(TxtGrossPay, TxtTax, TxtSSS, TxtPhilHealth, TxtPagIbig)
         ClassPayrollCalculation.TotalIncrease(TxtOvertime, TxtAllowance, TxtIncentives, TxtNightDifferential, TxtTotalIncrease)
         ClassPayrollCalculation.TotalMandatoryContri(TxtSSS, TxtPhilHealth, TxtPagIbig, TxtTax, TxtMandatory)
         ClassPayrollCalculation.TotalDeductions(TxtLate, TxtUndertime, TxtVoluntaryContributions, TxtMandatory, TxtTotalDeduc)
@@ -89,29 +89,35 @@
     End Sub
 
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-        'max 17 days and min 14 days
-        If String.IsNullOrEmpty(TxtPayrollPeriodName.Text) Then
-            MsgEmptyField()
-            Exit Sub
-        End If
 
-        Dim startDate As Date = DTPFrom.Value.Date
-        Dim endDate As Date = DTPTo.Value.Date
+        Try
+            'max 17 days and min 14 days
+            If String.IsNullOrEmpty(TxtPayrollPeriodName.Text) Then
+                MsgEmptyField()
+                Exit Sub
+            End If
 
-        If endDate < startDate Then
-            MessageBox.Show("The end date cannot be earlier than start date.")
-            Exit Sub
-        End If
+            Dim startDate As Date = DTPFrom.Value.Date
+            Dim endDate As Date = DTPTo.Value.Date
 
-        Dim difference As Integer = (endDate - startDate).Days + 1
+            If endDate < startDate Then
+                MessageBox.Show("The end date cannot be earlier than start date.")
+                Exit Sub
+            End If
 
-        If difference < 14 OrElse difference > 17 Then
-            MessageBox.Show("Invalid payroll period.")
-            Exit Sub
-        End If
-        '
-        ClassPayrollCalculation.NewPayrollPeriod(TxtPayrollPeriodName, DTPFrom, DTPTo, RBYes)
-        ClassPayrollCalculation.LoadPayrollPeriod(DGPayrollPeriod)
+            Dim difference As Integer = (endDate - startDate).Days + 1
+
+            If difference < 14 OrElse difference > 17 Then
+                MessageBox.Show("Invalid payroll period.")
+                Exit Sub
+            End If
+            '
+            ClassPayrollCalculation.NewPayrollPeriod(TxtPayrollPeriodName, DTPFrom, DTPTo, RBYes)
+            ClassPayrollCalculation.LoadPayrollPeriod(DGPayrollPeriod)
+
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub DgPayrollPeriod_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGPayrollPeriod.CellContentClick

@@ -138,8 +138,8 @@ Public Class ClassDepartmentHeadControls
         End Try
     End Sub
     Public Shared Sub GetDailyWageOfMonthlyEmployees(cb As Guna2ComboBox)
-        'Try
-        Dim selectedemployeeID As Integer = cb.SelectedValue
+        Try
+            Dim selectedemployeeID As Integer = cb.SelectedValue
             RunQuery("Select salary,type from tblsalary where employeeID = '" & selectedemployeeID & "'")
             Dim salary As Decimal = ds.Tables("querytable").Rows(0)(0)
             Dim type As String = ds.Tables("querytable").Rows(0)(1)
@@ -178,9 +178,9 @@ Public Class ClassDepartmentHeadControls
                 End With
             End If
             cb.SelectedIndex = -1
-        'Catch ex As Exception
-        '    MsgBox(ex.Message)
-        'End Try
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
     Public Shared Sub LoadSchedule(cbemp As Guna2ComboBox, clb As CheckedListBox, mtbtimein As MaskedTextBox, mtbtimeout As MaskedTextBox, mtbbreakin As MaskedTextBox, mtbbreakout As MaskedTextBox)
         Try
@@ -288,51 +288,55 @@ Public Class ClassDepartmentHeadControls
         End Try
     End Sub
     Public Shared Sub ApproveLeave(leaveid As Integer)
+        Try
+            RunQuery("Select employeeID,leavefrom,leaveto from tblfiledleave where filedleaveID = '" & leaveid & "'")
+            Dim leaveemployeeID As Integer = ds.Tables("querytable").Rows(0)(0)
+            Dim leavefrom As Date = Date.Parse(ds.Tables("querytable").Rows(0)(1))
+            Dim leaveto As Date = Date.Parse(ds.Tables("querytable").Rows(0)(2))
+
+            Dim currentdate As Date = leavefrom
+            While currentdate <= leaveto
+
+                Dim formattedcurrentdate As String = currentdate.ToString("yyyy-MM-dd")
+
+                RunQuery("Select * from tblattendance where employeeID = '" & leaveemployeeID & "' and date = '" & formattedcurrentdate & "'")
+                If ds.Tables("querytable").Rows.Count > 0 Then
+
+                    RunCommand("Update tblfiledleave SET status='Declined' where filedleaveID = '" & leaveid & "'")
+                    With com
+                        .ExecuteNonQuery()
+                        .Parameters.Clear()
+                    End With
 
 
-        RunQuery("Select employeeID,leavefrom,leaveto from tblfiledleave where filedleaveID = '" & leaveid & "'")
-        Dim leaveemployeeID As Integer = ds.Tables("querytable").Rows(0)(0)
-        Dim leavefrom As Date = Date.Parse(ds.Tables("querytable").Rows(0)(1))
-        Dim leaveto As Date = Date.Parse(ds.Tables("querytable").Rows(0)(2))
 
-        Dim currentdate As Date = leavefrom
-        While currentdate <= leaveto
+                    MsgBox("Date: " & currentdate & " already has attendance recorded. Leave request denied")
+                    currentdate = currentdate.AddDays(1)
+                    Continue While
+                End If
 
-            Dim formattedcurrentdate As String = currentdate.ToString("yyyy-MM-dd")
+                RunCommand("Insert into tblattendance (employeeID,date,report) VALUES (@employeeID,@date,'On Leave')")
+                With com
+                    .Parameters.AddWithValue("@employeeID", leaveemployeeID)
+                    .Parameters.AddWithValue("@date", currentdate)
+                    .ExecuteNonQuery()
+                    .Parameters.Clear()
+                    currentdate = currentdate.AddDays(1)
+                End With
 
-            RunQuery("Select * from tblattendance where employeeID = '" & leaveemployeeID & "' and date = '" & formattedcurrentdate & "'")
-            If ds.Tables("querytable").Rows.Count > 0 Then
-
-                RunCommand("Update tblfiledleave SET status='Declined' where filedleaveID = '" & leaveid & "'")
+                RunCommand("Update tblfiledleave SET status='Approve' where filedleaveID = '" & leaveid & "'")
                 With com
                     .ExecuteNonQuery()
                     .Parameters.Clear()
                 End With
+                MsgBox("Leave Approved", MsgBoxStyle.OkOnly)
 
+            End While
 
+        Catch ex As Exception
 
-                MsgBox("Date: " & currentdate & " already has attendance recorded. Leave request denied")
-                currentdate = currentdate.AddDays(1)
-                Continue While
-            End If
+        End Try
 
-            RunCommand("Insert into tblattendance (employeeID,date,report) VALUES (@employeeID,@date,'On Leave')")
-            With com
-                .Parameters.AddWithValue("@employeeID", leaveemployeeID)
-                .Parameters.AddWithValue("@date", currentdate)
-                .ExecuteNonQuery()
-                .Parameters.Clear()
-                currentdate = currentdate.AddDays(1)
-            End With
-
-            RunCommand("Update tblfiledleave SET status='Approve' where filedleaveID = '" & leaveid & "'")
-            With com
-                .ExecuteNonQuery()
-                .Parameters.Clear()
-            End With
-            MsgBox("Leave Approved", MsgBoxStyle.OkOnly)
-
-        End While
 
     End Sub
     Public Shared Sub DeclineLeave(leaveid As Integer)

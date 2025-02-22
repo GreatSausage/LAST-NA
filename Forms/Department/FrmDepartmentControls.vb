@@ -23,9 +23,13 @@
     End Sub
 
     Private Sub CbDepartment_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CbDepartment.SelectedIndexChanged
-        If CbDepartment.SelectedIndex = -1 Then
-            Exit Sub
-        End If
-        ClassDepartment.LoadDepartmentHead(CbDepartmentHead, CbDepartment)
+        Try
+            If CbDepartment.SelectedIndex = -1 Then
+                Exit Sub
+            End If
+            ClassDepartment.LoadDepartmentHead(CbDepartmentHead, CbDepartment)
+
+        Catch ex As Exception
+        End Try
     End Sub
 End Class

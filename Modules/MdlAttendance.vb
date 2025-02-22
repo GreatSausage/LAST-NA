@@ -12,7 +12,7 @@ Module MdlAttendance
 
             RunQuery("Select employeeID from tblemployee where rfidnumber='" & rfid & "'")
             Dim employeeID As Integer = ds.Tables("querytable").Rows(0)(0)
-            MsgBox(employeeID)
+
             Using command As New MySqlCommand("INSERT INTO tblAttendance(employeeID, date, login,report) VALUES (@employeeID, Curdate(), NOW(),'Present')", connection)
                 command.Parameters.AddWithValue("@employeeID", employeeID)
                 command.ExecuteNonQuery()
@@ -36,13 +36,11 @@ Module MdlAttendance
                 Exit Sub
             Else
                 employeeID = ds.Tables("querytable").Rows(0)(0)
-                MsgBox(employeeID)
             End If
 
             ' Check if the employee has already logged out today
             RunQuery("Select * from tblattendance where employeeID = '" & employeeID & "' and date=current_date() and login is not null and logout is not NULL")
             If ds.Tables("querytable").Rows.Count > 0 Then
-                MsgBox("Nag logout na today")
                 FrmAttendance.loginTimer.Start()
                 FrmAttendance.TxtIndicator.Text = "Login and Logout already recorded"
                 Exit Sub
@@ -52,7 +50,6 @@ Module MdlAttendance
             RunQuery("Select * from tblattendance where employeeID = '" & employeeID & "' and date=current_date() - INTERVAL 1 DAY and logout is NULL")
 
             If ds.Tables("querytable").Rows.Count > 0 Then
-                MsgBox("Logged out yesterday")
                 Dim attendanceID As Integer = ds.Tables("querytable").Rows(0)(0)
                 ' Update the previous day's logout with the current time
                 RunCommand("Update tblattendance SET logout=NOW() WHERE attendanceID='" & attendanceID & "'")
@@ -69,7 +66,6 @@ Module MdlAttendance
             RunQuery("Select * from tblattendance where employeeID = '" & employeeID & "' and date=current_date() and logout is NULL")
 
             If ds.Tables("querytable").Rows.Count > 0 Then
-                MsgBox("Logged out today")
                 Dim attendanceID As Integer = ds.Tables("querytable").Rows(0)(0)
                 ' Update today's logout with the current time
                 RunCommand("Update tblattendance SET logout=NOW() WHERE attendanceID='" & attendanceID & "'")
@@ -86,7 +82,6 @@ Module MdlAttendance
             RunQuery("Select * from tblattendance where employeeID = '" & employeeID & "' and date=current_date()")
 
             If ds.Tables("querytable").Rows.Count = 0 Then
-                MsgBox("New attendance")
                 NewAttendance(rfid)
                 FrmAttendance.loginTimer.Start()
                 FrmAttendance.TxtIndicator.Text = "Login Success"
@@ -115,17 +110,22 @@ Module MdlAttendance
     End Sub
 
     Public Sub SaveSignUp(firstname As String, lastname As String, username As String, password As String)
-        OpenServerConnection()
-        Using command As New MySqlCommand("INSERT INTO tblusers (firstName, lastName, role, username, password) 
+        Try
+            OpenServerConnection()
+            Using command As New MySqlCommand("INSERT INTO tblusers (firstName, lastName, role, username, password) 
                                            VALUES (@firstname, @lastname, @role, @username, @password)", connection)
-            command.Parameters.AddWithValue("@firstname", firstname)
-            command.Parameters.AddWithValue("@lastname", lastname)
-            command.Parameters.AddWithValue("@role", "Admin")
-            command.Parameters.AddWithValue("@username", username)
-            command.Parameters.AddWithValue("@password", password)
-            command.ExecuteNonQuery()
-            FrmLogin.Show()
-            FrmSignUpAdmin.Close()
-        End Using
+                command.Parameters.AddWithValue("@firstname", firstname)
+                command.Parameters.AddWithValue("@lastname", lastname)
+                command.Parameters.AddWithValue("@role", "Admin")
+                command.Parameters.AddWithValue("@username", username)
+                command.Parameters.AddWithValue("@password", password)
+                command.ExecuteNonQuery()
+                FrmLogin.Show()
+                FrmSignUpAdmin.Close()
+            End Using
+
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Module
